@@ -1,7 +1,6 @@
-class Renting < ApplicationRecord
+class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :product
-  has_many :reviews
 
   validates :date_start, presence: true, uniqueness: true
   validates :date_end, presence: true, uniqueness: true

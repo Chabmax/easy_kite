@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   CATEGORIES = ['aile', 'planche', 'harnai', 'barre', 'kit complet', 'accessoires']
   belongs_to :user
-  has_many :rentings
+  has_many :rentals
 
   validates :category, presence: true, inclusion: {in: ['aile', 'planche', 'harnai', 'barre', 'kit complet', 'accessoires']}
   validates :description
