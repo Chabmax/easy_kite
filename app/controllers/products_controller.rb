@@ -14,9 +14,9 @@ class ProductsController < ApplicationController
   end
 
   def create
+
     @product = current_user.products.build(params_product)
     authorize @product
-    @product.user = @user
     if @product.save
       redirect_to @product
     else
@@ -25,8 +25,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-
-
   end
 
   def edit
