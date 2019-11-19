@@ -13,21 +13,23 @@
 <div class="container">
   <div class="row justify-content-between">
     <% @products.each do |product| %>
-      <%= link_to product_path(product[:id]) do  %>
-        <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= product.brand %></h2>
-                <h4><%= product.category %></h4>
-                <p><%= product.description %></p>
-                <p><%= product.status %></p>
+      <%= link_to product_path(product[:id]) do %>
+        <div class= "col-3">
+          <div class="card-trip m-2">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= product.brand %></h2>
+                  <h4><%= product.category %></h4>
+                  <p><%= product.description %></p>
+                  <p><%= product.status %></p>
+                </div>
+                <h2 class="card-trip-pricing"><%= product.price %></h2>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
               </div>
-              <h2 class="card-trip-pricing"><%= product.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            </div>
-          <%end %>
-       </div>
+            <%end %>
+         </div>
+        </div>
     <% end %>
   </div>
 </div>
