@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = policy_scope(Product)
   end
 
   def show
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
+    authorize @product
   end
 
   def new
@@ -24,19 +26,30 @@ class ProductsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    # @product = Product.find(params[:id])
+    authorize @product
   end
 
-  def edit
+  def update
+    # @product = Product.find(params[:id])
+    @product.update(params_product)
+    authorize @product
+    redirect_to @product
   end
 
   def destroy
     authorize @product
+    # @product = Product.find(params[:id])
   end
 
   private
 
   def params_product
-    params.require(:product).permit(:category, :brand, :description, :status, :price, photos: [])
+    params.require(:product).permit(:category, :brand, :description, :status, :price, :address, :city, photos: [])
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
