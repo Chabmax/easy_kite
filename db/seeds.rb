@@ -4,35 +4,110 @@ Product.destroy_all
 
 puts 'Creating 5 fake users...'
 
-User.create!{
-  email: "toto@gmail.com",
+toto = User.create!({
+  email:  "toto@gmail.com",
   password: "123456",
   first_name: "Toto",
   last_name: "Dujardin"
-}
-User.create!{
-  email: "tonton@gmail.com",
+})
+tonton = User.create!({
+  email:  "tonton@gmail.com",
   password: "123456",
   first_name: "Tonton",
   last_name: "Bob"
-}
-User.create!{
-  email: "tata@gmail.com",
+})
+tata = User.create!({
+  email:  "tata@gmail.com",
   password: "123456",
   first_name: "Tata",
   last_name: "Georgette"
-}
-User.create!{
-  email: "tutu@gmail.com",
+})
+tutu = User.create!({
+  email:  "tutu@gmail.com",
   password: "123456",
   first_name: "Tutu",
   last_name: "Latutule"
-}
-User.create!{
-  email: "titi@gmail.com",
+})
+titi = User.create!({
+  email:  "titi@gmail.com",
   password: "123456",
   first_name: "Titi",
   last_name: "Henry"
-}
+})
+
+puts 'Creating fake products...'
+
+Product.create!({
+  category: "aile",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id
+})
+Product.create!({
+  category: "planche",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id
+})
+Product.create!({
+  category: "harnai",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id
+})
+Product.create!({
+  category: "barre",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id
+})
+Product.create!({
+  category: "kit complet",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tonton.id
+})
+Product.create!({
+  category: "accessoires",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tata.id
+})
+Product.create!({
+  category: "kit complet",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tata.id
+})
+Product.create!({
+  category: "aile",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id
+})
+Product.create!({
+  category: "kit complet",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: titi.id
+})
 
 puts 'Finished!'
