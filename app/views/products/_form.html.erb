@@ -1,6 +1,6 @@
 <%= simple_form_for(@product) do |f| %>
 
-  <div class="product-infos col-6">
+  <div class="product-infos col-lg-9">
     <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category" %>
     <%= f.input :brand %>
     <%= f.input :description %>
@@ -9,7 +9,7 @@
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
 
-  <div class="product-location col-6 push-right">
+  <div class="product-location col-lg-9">
     <%= f.input :address %>
     <%= f.input :city %>
   </div>
