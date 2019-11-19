@@ -30,7 +30,9 @@
   <div class="card-product">
    <% if @product.photos.attached? %>
     <!-- sinon photos.present? ou unless photos[0]. -->
-      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
     <% else %>
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
@@ -47,7 +49,9 @@
 <!-- Card avatar -->
     <% if @product.photos.attached? %>
     <!-- sinon photos.present? ou unless photos[0]. -->
-      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
     <% else %>
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
