@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-
     @product = current_user.products.build(params_product)
     authorize @product
     if @product.save
@@ -35,6 +34,6 @@ class ProductsController < ApplicationController
 
   private
   def params_product
-    params.require(:product).permit(:category, :brand, :description, :status, :price, photos:[])
+    params.require(:product).permit(:category, :brand, :description, :status, :price, photos: [])
   end
 end
