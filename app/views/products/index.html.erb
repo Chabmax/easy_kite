@@ -20,7 +20,7 @@
     <% @products.each do |product| %>
       <%= link_to product_path(product[:id]) do %>
           <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <img src="https://source.unsplash.com/1600x900/?kitesurf" />
             <div class="card-trip-infos">
               <div>
                 <h2><%= product.brand.capitalize %></h2>
@@ -36,5 +36,3 @@
     <% end %>
   </div>
 </div>
-
-
