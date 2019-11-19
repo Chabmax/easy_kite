@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   resources :products do
-    resources :rentals, only: [ :new, :create, :edit, :update, :destroy ]
+    resources :rentals, only: [ :index, :new, :create, :edit, :update, :destroy ]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
