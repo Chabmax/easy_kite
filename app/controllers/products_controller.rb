@@ -9,24 +9,23 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @product = Product.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @product = Product.new(params_product)
     @product.user = @user
+    raise
     if @product.save
-      redirect_to ######## ROUTE
+      redirect_to product_path(@product)
     else
       render :new
     end
   end
 
   def update
-
-
   end
 
   def edit
