@@ -1,12 +1,38 @@
 
-
 <div class="container mt-4">
- <div class="card-product">
+
+
+  <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
+    <div class="carousel-inner">
+        <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
+
+    <% if @product.photos.attached? %>
+        <% @product.photos.each do |photo| %>
+        <div class="carousel-item active">
+          <%= cl_image_tag photo.key, class:'d-block w-100', height: 300, width: 400, crop: :fill %>
+        </div>
+        <% end %>
+      <% else %>
+        <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", class:"d-block w-100", height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <div class="card-product">
    <% if @product.photos.attached? %>
     <!-- sinon photos.present? ou unless photos[0]. -->
       <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
     <% else %>
-      <%= cl_image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
+      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
     <div class="card-product-infos">
       <h2>  <%= @product.category %></h2>
@@ -23,7 +49,7 @@
     <!-- sinon photos.present? ou unless photos[0]. -->
       <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
     <% else %>
-      <%= cl_image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
+      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
     <div class="card-user-infos">
       <h2><%= @product.user.first_name%> <%= @product.user.first_name%></h2>
@@ -31,6 +57,82 @@
     </div>
   </div>
 </div>
+
+
+<div class="bookDate">
+          <div class="">
+              <div class="bookDateContainer">
+    <div class="entry">
+        <label class="label" for="date-from">Sélectionnez vos dates :</label>
+        <div class="datepicker">
+    <div id="date-from" class="pickDate" disabled="" data-datepicker-ex="1">
+        <span class="placeholderFrom">Début</span>
+        <span class="from" data-date="">
+            <span data-date-from=""></span>
+            <span data-time-from=""></span>
+        </span>
+        <span class="icon-interface-right"></span>
+        <span class="to" data-date="">
+            <span data-date-to=""></span>
+            <span data-time-to=""></span>
+        </span>
+        <span class="placeholderTo">Fin</span>
+    </div>
+
+
+
+    <div class="extra" style="display:none">
+        <div data-id="dpReleaseMorningCont" style="display:none">
+            <input type="checkbox" id="dpReleaseMorning_4rhtybv68h1574174481421" data-id="dpReleaseMorning" class="style">
+            <label for="dpReleaseMorning_4rhtybv68h1574174481421" class="label"><span></span> Je libère le bateau dans la matinée</label>
+        </div>
+
+        <div data-id="dpHalfDayDetails" style="display:none">
+            <div data-id="dpHalfDayCont">
+                <input type="checkbox" id="dpHalfDay_w645m8384j1574174481422" data-id="dpHalfDay" class="style">
+                <label for="dpHalfDay_w645m8384j1574174481422" class="label"><span></span> Demi-journée</label>
+            </div>
+
+            <div class="selectPure" data-id="dpHalfDayPeriodCont" style="display:none">
+                <select id="dpHalfDayPeriod" data-id="dpHalfDayPeriod" tabindex="0" class="selectStyle">
+                    <option value="1" selected="">Matin</option>
+                    <option value="2">Après-midi</option>
+                </select>
+            </div>
+        </div>
+
+            </div>
+</div>    </div>
+
+    <div class="price details-booking hide">
+        <ul>
+            <li>
+                <ul class="pricePerExtras">
+                </ul>
+            </li>
+            <li class="totalPrice">
+                <label class="label">Total</label>
+                <div class="h4 result"><span></span>€</div>
+            </li>
+            <li id="auto-pc">
+                <label class="label">Promotions <span id="auto-pc-percentage"></span></label>
+                <div class="h6" id="result">-<span id="auto-pc-discount" data-exchange-rate="1"></span>€                </div>
+            </li>
+            <li class="newTotalPrice">
+                <label class="label">Total</label>
+                <div class="h6 result"><span></span>€</div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="dates-not-available"></div>
+</div>          </div>
+
+        <div class="action" data-owner-ad="false">
+            <button class="btn submit js-open-popin send-message xl" data-popin-target="sendMessageModal">Envoyer un message</button>
+            <span>Ou</span>
+
+
 
 
 
