@@ -1,0 +1,36 @@
+
+
+<div class="container mt-4">
+ <div class="card-product">
+   <% if @product.photos.attached? %>
+    <!-- sinon photos.present? ou unless photos[0]. -->
+      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <div class="card-product-infos">
+      <h2>  <%= @product.category %></h2>
+      <h2>  <%= @product.brand %> </h2>
+      <p>   <%= @product.description %></p>
+      <h2>  <%= @product.status %> </h2>
+      <h2>  <%= @product.price %>
+    </div>
+  </div>
+
+  <div class="card-user">
+<!-- Card avatar -->
+    <% if @product.photos.attached? %>
+    <!-- sinon photos.present? ou unless photos[0]. -->
+      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <div class="card-user-infos">
+      <h2><%= @product.user.first_name%> <%= @product.user.first_name%></h2>
+      <h2> <%= @product.user.niveau_nautique%> </h2>
+    </div>
+  </div>
+</div>
+
+
+

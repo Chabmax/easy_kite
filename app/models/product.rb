@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   CATEGORIES = ['aile', 'planche', 'harnai', 'barre', 'kit complet', 'accessoires']
+  STATUS = (1..5).to_a
   belongs_to :user
   has_many :rentals
 
