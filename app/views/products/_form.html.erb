@@ -1,8 +1,16 @@
 <%= simple_form_for(@product) do |f| %>
-   <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category" %>
+  <div class="product-infos col-6">
+  <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category" %>
   <%= f.input :brand %>
   <%= f.input :description %>
   <%= f.input :status, collection: Product::STATUS, include_blank: "Use less than 10days (1); Use more than a year (5) "%>
   <%= f.input :price %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  </div>
+
+  <div class="product-location col-6 push-right">
+    <%= f.input :address %>
+    <%= f.input :city %>
+  </div>
   <%= f.submit class: 'btn btn-primary'%>
 <% end %>
