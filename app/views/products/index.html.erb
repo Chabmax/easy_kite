@@ -21,7 +21,7 @@
           <p><%= product.description %></p>
           <p><%= product.status %></p>
           <h3 class="text-right"><%= product.price %></h3>
-          <%= link_to "Discover More", product_path(@product), class: "btn btn-success"  %>
+          <%= link_to "Discover More", product_path(product), class: "btn btn-success"  %>
         </ul>
       </div>
     <% end %>
