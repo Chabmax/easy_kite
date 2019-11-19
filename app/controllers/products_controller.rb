@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @products = Product.all
@@ -9,16 +10,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @product = Product.new
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @product = Product.new(params_product)
+    @product = current_user.products.build(params_product)
+    authorize @product
     @product.user = @user
     if @product.save
-      redirect_to ######## ROUTE
+      redirect_to @product
     else
       render :new
     end
