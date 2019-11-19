@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
   end
 
   private
