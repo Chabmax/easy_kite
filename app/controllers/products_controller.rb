@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def show
     # @product = Product.find(params[:id])
-    authorize @product
+    # authorize @product
   end
 
   def new
@@ -28,18 +28,21 @@ class ProductsController < ApplicationController
 
   def edit
     # @product = Product.find(params[:id])
-    authorize @product
+    #authorize @product
   end
 
   def update
     # @product = Product.find(params[:id])
-    @product.update(params_product)
-    authorize @product
-    redirect_to @product, notice: "Procuct successfully updated"
+    # authorize @product
+    if @product.update(params_product)
+      redirect_to @product, notice: "Procuct successfully updated"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    authorize @product
+    #authorize @product
     @product.destroy
     redirect_to products_path, notice: "Procuct successfully deleted"
   end
@@ -52,5 +55,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+    authorize @product
   end
 end
