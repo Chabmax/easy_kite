@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(params_product)
     authorize @product
     if @product.save
-      redirect_to @product
+      redirect_to @product, notice: "Procuct successfully created"
     else
       render :new
     end
@@ -35,12 +35,13 @@ class ProductsController < ApplicationController
     # @product = Product.find(params[:id])
     @product.update(params_product)
     authorize @product
-    redirect_to @product
+    redirect_to @product, notice: "Procuct successfully updated"
   end
 
   def destroy
     authorize @product
-    # @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to products_path, notice: "Procuct successfully deleted"
   end
 
   private

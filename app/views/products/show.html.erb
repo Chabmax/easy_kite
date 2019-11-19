@@ -1,6 +1,15 @@
 <div class="container mt-4">
 
-  <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
+
+  <% if policy(@product).edit? %>
+    <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
+  <% end %>
+  <% if policy(@product).destroy? %>
+    <%= link_to "Delete your product", @product, :confirm => "Are you sure?", :method => :delete, class: "btn btn-danger shadow mb-2" %>
+  <% end %>
+
+
+
   <p>Posted by <%= @product.user.first_name %> <%= @product.user.last_name %></p>
   <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
     <div class="carousel-inner">
