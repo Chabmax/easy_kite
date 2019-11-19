@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
     @user = current_user
     @product = Product.new(params_product)
     @product.user = @user
-    raise
     if @product.save
       redirect_to product_path(@product)
     else
