@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @products = Product.all
+    @products = policy_scope(Product)
   end
 
   def show
@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
@@ -33,6 +34,7 @@ class ProductsController < ApplicationController
   end
 
   private
+
   def params_product
     params.require(:product).permit(:category, :brand, :description, :status, :price, photos: [])
   end
