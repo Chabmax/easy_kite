@@ -9,4 +9,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :status, presence: true, inclusion: {in: (1..5)}
   validates :price, presence: true
+
+  validates :address, presence: true
+  validates :city, presence: true
 end
