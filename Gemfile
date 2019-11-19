@@ -3,6 +3,7 @@ ruby '2.6.3'
 
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'cloudinary', '~> 1.12.0'
 gem 'pundit'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
