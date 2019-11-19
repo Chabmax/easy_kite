@@ -1,5 +1,5 @@
-<div class="banner">
-  <div class="container">
+
+  <div class="container p-0">
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control form-group d-flex">
         <input class="form-control string required" type="text" name="search[query]" id="search_query" />
@@ -9,21 +9,27 @@
       </div>
     <% end %>
   </div>
-</div>
 
-<div class="container d-flex flex-wrap justify-content-between p-0">
-
-  <div class="row ">
+<div class="container">
+  <div class="row justify-content-between">
     <% @products.each do |product| %>
-      <div class="card col-3 m-2 p-1">
-          <h3><%= product.brand %></h3>
-          <p><%= product.category %></p>
-          <p><%= product.description %></p>
-          <p><%= product.status %></p>
-          <h3 class="text-right"><%= product.price %></h3>
-          <%= link_to "Discover More", product_path(@product), class: "btn btn-success"  %>
-        </ul>
-      </div>
+      <%= link_to product_path(product[:id]) do  %>
+        <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= product.brand %></h2>
+                <h4><%= product.category %></h4>
+                <p><%= product.description %></p>
+                <p><%= product.status %></p>
+              </div>
+              <h2 class="card-trip-pricing"><%= product.price %></h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
+          <%end %>
+       </div>
     <% end %>
   </div>
 </div>
+
+
