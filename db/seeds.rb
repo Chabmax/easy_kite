@@ -43,7 +43,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id
+  user_id: toto.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "planche",
@@ -51,7 +53,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id
+  user_id: toto.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "harnai",
@@ -59,7 +63,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id
+  user_id: toto.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "barre",
@@ -67,7 +73,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id
+  user_id: toto.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "kit complet",
@@ -75,7 +83,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: tonton.id
+  user_id: tonton.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "accessoires",
@@ -83,7 +93,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: tata.id
+  user_id: tata.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "kit complet",
@@ -91,7 +103,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: tata.id
+  user_id: tata.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "aile",
@@ -99,7 +113,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id
+  user_id: toto.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 Product.create!({
   category: "kit complet",
@@ -107,7 +123,9 @@ Product.create!({
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: titi.id
+  user_id: titi.id,
+  address: "11 rue de la mer",
+  city: "Berk"
 })
 
 puts 'Finished!'
