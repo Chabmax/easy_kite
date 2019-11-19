@@ -16,19 +16,19 @@
 </div>
 
 <div class="container">
-  <div class="grid-wrapper mb-2">
+  <div class="grid-wrapper">
     <% @products.each do |product| %>
       <%= link_to product_path(product[:id]) do %>
           <div class="card-trip">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
             <div class="card-trip-infos">
               <div>
-                <h2><%= product.brand %></h2>
-                <h4><%= product.category %></h4>
+                <h2><%= product.brand.capitalize %></h2>
+                <h3><%= product.category.capitalize %></h3>
                 <p><%= product.description %></p>
                 <p><%= product.status %></p>
               </div>
-              <h2 class="card-trip-pricing"><%= product.price %></h2>
+              <h2 class="card-trip-pricing"><%= product.price %>€</h2>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
             </div>
          </div>
