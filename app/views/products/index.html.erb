@@ -1,0 +1,10 @@
+<div class="container">
+ <ul>
+  <% @products.each do |product| %>
+  <li><%= product.brand %> </li>
+  <li> <%= product.category %> </li>
+  <li> <%= product.description %> </li>
+  <% end %>
+ </ul>
+
+</div>
