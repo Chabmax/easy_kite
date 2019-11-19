@@ -1,7 +1,7 @@
-
 <div class="container mt-4">
 
-
+  <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
+  <p>Posted by <%= @product.user.first_name %> <%= @product.user.last_name %></p>
   <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
     <div class="carousel-inner">
         <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
@@ -30,7 +30,9 @@
   <div class="card-product">
    <% if @product.photos.attached? %>
     <!-- sinon photos.present? ou unless photos[0]. -->
-      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
     <% else %>
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
@@ -47,7 +49,9 @@
 <!-- Card avatar -->
     <% if @product.photos.attached? %>
     <!-- sinon photos.present? ou unless photos[0]. -->
-      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
     <% else %>
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
