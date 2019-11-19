@@ -1,15 +1,14 @@
 class Product < ApplicationRecord
-  CATEGORIES = ['aile', 'planche', 'harnai', 'barre', 'kit complet', 'accessoires']
+  CATEGORIES = ['kit complet', 'aile', 'planche', 'harnais', 'barre', 'accessoires']
   STATUS = (1..5).to_a
   belongs_to :user
   has_many_attached :photos
   has_many :rentals
 
-  validates :category, presence: true, inclusion: {in: ['aile', 'planche', 'harnai', 'barre', 'kit complet', 'accessoires']}
+  validates :category, presence: true, inclusion: { in: ['kit complet', 'aile', 'planche', 'harnais', 'barre', 'accessoires'] }
   validates :description, presence: true
-  validates :status, presence: true, inclusion: {in: (1..5)}
-  validates :price, presence: true
-
+  validates :status, presence: true, inclusion: { in: (1..5) }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :address, presence: true
   validates :city, presence: true
 end
