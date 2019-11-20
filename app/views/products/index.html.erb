@@ -17,7 +17,8 @@
 
 
 <div class="container d-flex">
-  <div class="grid-wrapper">
+
+  <div class="grid-wrapper" style="width: 60%;">
     <% @products.each do |product| %>
       <%= link_to product_path(product[:id]) do %>
           <div class="card-trip">
@@ -36,10 +37,11 @@
       <%end %>
     <% end %>
   </div>
+
   <div
     id="map"
-    style="width: 100%;
-    height: 600px;"
+    style="width: 40%;
+    height: 100vh;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
