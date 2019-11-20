@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>New rental</h1>
+
+
+<%= simple_form_for(@product) do |f| %>
+
+  <div class="product-infos col-lg-9">
+    <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category" %>
+    <%= f.input :brand %>
+    <%= f.input :description, placeholder: "Very easy to use / For expert only / Good sensation... " %>
+    <%= f.input :status, collection: Product::STATUS.reverse, include_blank: "Select the status of your product", hint: "Use less than 10days = NEW (5); Use more than a year = Already Used (1)" %>
+    <%= f.input :price, label: 'Price/day TTC', input_html: { min: '0' }, hint: "This is the price per day in €"  %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, hint: "You can download many photos. Accepted format : jpeg, jpg, png, gif" %>
+  </div>
+
+  <div class="product-location col-lg-9">
+    <%= f.input :address %>
+    <%= f.input :city %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary'%>
+
+<% end %>
+
+
+
+  <%= link_to "Back", products_path%>
+</div>
+
