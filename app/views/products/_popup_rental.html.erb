@@ -1,0 +1,35 @@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Want to book <%= @product.category.capitalize %> <%= @product.brand.capitalize %></h5>
+          <h6>Localized : <%= @product.address.capitalize %></h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%= simple_form_for [@product, @rental] do |f| %>
+        <div class="modal-body">
+          <div class="rental-infos mx-5">
+            <% if @rental.errors.any? %>
+            <ul>
+              <% @rental.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+            <% end %>
+            <!-- date picker -->
+            <%= f.input :date_start, as: :date, html5: true, wrapper_html: { class: 'form-inline justify-content-between' }, placeholder: 'Date start' %>
+            <%= f.input :date_end, as: :date, html5: true, wrapper_html: { class: 'form-inline justify-content-between' } %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit class: 'btn btn-primary'%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
