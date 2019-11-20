@@ -1,0 +1,37 @@
+
+
+<div>
+<h1>  Vue par produits</h1>
+  <%=  @user.products.each do |p| %>
+    <h2> <%= p.category %> <%= p.brand %></h2>
+    <% p.rentals.each do |r| %>
+      <div class="notification">
+        <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+        <div class="notification-content">
+          <%= r.date_start %> to <%= r.date_end %>
+        </div>
+        <div class="notification-actions">
+          <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+          <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+
+<h1>  Vue par date </h1>
+  <% @rentals.each do |r| %>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+      <div class="notification-content">
+        <h2> <%= p.category %> <%= p.brand %></h2>
+        <%= r.date_start %> to <%= r.date_end %>
+      </div>
+      <div class="notification-actions">
+        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+        <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+      </div>
+    </div>
+  <% end %>
+
+</div>
