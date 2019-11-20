@@ -39,93 +39,34 @@ puts 'Creating fake products...'
 
 Product.create!({
   category: "aile",
-  brand: "surfbrand",
+  brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "11 rue de la mer",
+  address: "157 Rue du Po, 56340 Carnac",
 
 })
 Product.create!({
   category: "planche",
-  brand: "surfbrand",
+  brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "11 rue de la mer",
+  address: "2 Rue Florian Laporte, 56100 Lorient",
 
 })
 Product.create!({
-  category: "harnais",
-  brand: "surfbrand",
+  category: "planche",
+  brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "11 rue de la mer",
+  address: "9 Rue des Falaises, 66290 Cerbère",
 
 })
-Product.create!({
-  category: "barre",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: toto.id,
-  address: "11 rue de la mer",
 
-})
-Product.create!({
-  category: "kit complet",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: tonton.id,
-  address: "11 rue de la mer",
-
-})
-Product.create!({
-  category: "accessoires",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: tata.id,
-  address: "11 rue de la mer",
-
-})
-Product.create!({
-  category: "kit complet",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: tata.id,
-  address: "11 rue de la mer",
-
-})
-Product.create!({
-  category: "aile",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: toto.id,
-  address: "11 rue de la mer",
-
-})
-Product.create!({
-  category: "kit complet",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: titi.id,
-  address: "11 rue de la mer",
-
-})
 
 puts 'Finished!'
