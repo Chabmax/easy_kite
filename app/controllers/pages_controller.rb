@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @user = current_user
+    @rentals = @user.rentals.order(date_start: :desc)
+  end
 end

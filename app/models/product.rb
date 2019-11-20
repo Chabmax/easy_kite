@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   has_many_attached :photos
   has_many :rentals
 
-
   validates :category, presence: true, inclusion: { in: ['kit complet', 'aile', 'planche', 'harnais', 'barre', 'accessoires'] }
   validates :description, presence: true
   validates :status, presence: true, inclusion: { in: (1..5) }

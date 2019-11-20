@@ -1,0 +1,42 @@
+
+
+  <div class="container">
+  <h2>  Vue par produits</h2>
+    <div class="container col-9 mt-2 ">
+      <%  @user.products.each do |p| %>
+        <div class="border-bottom">
+            <h3> <%= p.category %> <%= p.brand %></h3>
+            <% p.rentals.each do |r| %>
+              <div class="notification">
+                <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+                <div class="notification-content">
+                  <%= r.date_start %> to <%= r.date_end %>
+                </div>
+                <div class="notification-actions">
+                  <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+                  <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+
+  <h2>  Vue par date </h2>
+    <div class="container col-9 mt-2">
+      <% @rentals.each do |rental| %>
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+          <div class="notification-content">
+            <h4> <%= rental.product.category %> <%= rental.product.brand %></h4>
+            <%= rental.date_start %> to <%= rental.date_end %>
+          </div>
+          <div class="notification-actions">
+
+            <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+            <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
