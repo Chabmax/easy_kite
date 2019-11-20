@@ -20,7 +20,6 @@ class RentalsController < ApplicationController
       render :new
     end
   end
-  end
 
   def edit
 
