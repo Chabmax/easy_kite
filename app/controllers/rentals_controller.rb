@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_product, onlt: [:new]
+  before_action :set_product, only: [:new]
 
   def index
 
