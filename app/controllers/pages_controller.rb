@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @rentals = Rental.where(user: current_user).order(date_start: :desc)
     @user = current_user
+    @rentals = @user.rentals.order(date_start: :desc)
   end
 end
