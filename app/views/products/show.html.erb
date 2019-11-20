@@ -10,7 +10,7 @@
   <% end %>
 
 
-
+<!-- carousel -->
   <p>Posted by <%= @product.user.first_name %> <%= @product.user.last_name %></p>
   <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
     <div class="carousel-inner">
@@ -36,7 +36,33 @@
     </a>
   </div>
 
+<!-- nom - proposé par + Avatar -->
+<div>
+  <h2>  <%= @product.category %></h2>
+  <p>proposé par </p>
+     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  <h2><%= @product.user.first_name%> <%= @product.user.last_name%></h2>
+</div>
 
+<!-- carte location sticky top -->
+<div>
+  CARTE LOCATION
+  Date debut
+  Date fin
+</div>
+
+<!-- carractéristiques produit -->
+carractéristiques produit
+    <div>
+      <h2>  <%= @product.category %></h2>
+      <h2>  <%= @product.brand %> </h2>
+      <p>   <%= @product.description %></p>
+      <h2>  <%= @product.status %> </h2>
+      <h2>  <%= @product.price %>
+    </div>
+
+<!-- Photos -->
+PHOTOS
   <div class="card-product">
    <% if @product.photos.attached? %>
     <!-- sinon photos.present? ou unless photos[0]. -->
@@ -46,14 +72,26 @@
     <% else %>
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
-    <div class="card-product-infos">
-      <h2>  <%= @product.category %></h2>
-      <h2>  <%= @product.brand %> </h2>
-      <p>   <%= @product.description %></p>
-      <h2>  <%= @product.status %> </h2>
-      <h2>  <%= @product.price %>
-    </div>
   </div>
+
+GEO LOC
+<div>
+      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
+
+</div>
+
+
+REVUES
+<div>
+<h1></h1>
+<p></p>
+</div>
+
+<div>
+<h1></h1>
+<p></p>
+</div>
+
 
   <div class="card-user">
 <!-- Card avatar -->
@@ -66,7 +104,7 @@
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
     <% end %>
     <div class="card-user-infos">
-      <h2><%= @product.user.first_name%> <%= @product.user.first_name%></h2>
+      <h2><%= @product.user.first_name%> <%= @product.user.last_name%></h2>
 
     </div>
   </div>
