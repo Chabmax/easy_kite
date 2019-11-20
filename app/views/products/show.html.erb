@@ -1,72 +1,87 @@
-<div class="container mt-4">
-<%= link_to "Add rental", new_product_rental_path(@product), class: "btn btn-danger"  %>
 <!-- carousel -->
-  <p>Posted by <%= @product.user.first_name %> <%= @product.user.last_name %></p>
-  <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
+  <div id="carouselExampleControls" class="carousel slide mb-3" data-ride="carousel">
     <div class="carousel-inner">
         <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
-
-    <% if @product.photos.attached? %>
+      <% if @product.photos.attached? %>
         <% @product.photos.each do |photo| %>
-        <div class="carousel-item active">
-          <%= cl_image_tag photo.key, class:'d-block w-100', height: 300, width: 400, crop: :fill %>
-        </div>
+          <div class="carousel-item active">
+            <%= cl_image_tag photo.key, class:'d-block w-100', height: 500, width: 400, crop: :fill %>
+          </div>
         <% end %>
       <% else %>
-        <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", class:"d-block w-100", height: 300, width: 400, crop: :fill %>
+        <%= image_tag "https://source.unsplash.com/featured/500X1200/?kitesurf", class:"d-block w-100", height: 500, width: 400, crop: :fill %>
       <% end %>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="border-right">
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </div>
+    <div class="border-left">
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
 
 <!-- nom - proposé par + Avatar -->
-<div>
-  <h2>  <%= @product.category %></h2>
-  <p>proposé par </p>
-     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  <h2><%= @product.user.first_name%> <%= @product.user.last_name%></h2>
-</div>
-
-<!-- carte location sticky top -->
-<div>
-  CARTE LOCATION
-  Date debut
-  Date fin
-</div>
-
-<!-- carractéristiques produit -->
-carractéristiques produit
-    <div>
-      <h2>  <%= @product.category %></h2>
-      <h2>  <%= @product.brand %> </h2>
-      <p>   <%= @product.description %></p>
-      <h2>  <%= @product.status %> </h2>
-      <h2>  <%= @product.price %>
+<div class="container col-9 d-flex justify-content-between">
+  <div class="card-show text-center mr-3">
+    <div class="text-center">
+      <p>proposé(e) par </p>
+         <img src="https://kitt.lewagon.com/placeholder/users/BrianRid" class="card-show-user avatar-bordered-show" />
+      <p><%= @product.user.first_name%> <%= @product.user.last_name%></p>
     </div>
-
-<!-- Photos -->
-PHOTOS
-  <div class="card-product">
-   <% if @product.photos.attached? %>
-    <!-- sinon photos.present? ou unless photos[0]. -->
-      <% @product.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-    <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
-    <% end %>
   </div>
+  <div>
+    <%= link_to "Add rental", new_product_rental_path(@product), class: "btn btn-info"  %>
+  </div>
+</div>
+  <!-- carractéristiques produit -->
+  <div class="container col-9 mt-2">
+    <div class="card-product">
+      <div class="card-title px-2">
+        <h1>Caractéristiques produit </h1>
+      </div>
+      <div class="card-body px-2">
+        <div class="category">
+          <h2> Category: <%= @product.category.capitalize %></h2>
+        </div>
+        <div class="brand">
+          <h2> Brand: <%= @product.brand.capitalize %> </h2>
+        </div>
+        <div class="description">
+          <p>  Description: <%= @product.description %></p>
+        </div>
+        <div class="material">
+          <h2> Material review: <%= @product.status %> </h2>
+        </div>
+        <div class="price">
+          <h2> Price: <%= @product.price %> € </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Photos -->
+  <div class="container col-9 mt-2">
+    <div class="picture-wrapper">
+     <% if @product.photos.attached? %>
+      <!-- sinon photos.present? ou unless photos[0]. -->
+        <% @product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "picture-item"%>
+        <% end %>
+      <% else %>
+        <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+  </div>
+
 
 GEO LOC
 <div>
-      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
+      <%= image_tag "https://source.unsplash.com/featured/300X1200/?maps", height: 300, width: 400, crop: :fill %>
 
 </div>
 
@@ -98,7 +113,7 @@ REVUES
 
     </div>
   </div>
-</div>
+
 
 
 <div class="bookDate">
