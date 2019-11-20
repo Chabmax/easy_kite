@@ -1,6 +1,10 @@
 puts 'Cleaning database...'
+Rental.destroy_all
+puts 'all rentals destroy'
 User.destroy_all
+puts 'all users destroy'
 Product.destroy_all
+puts 'all products destroy'
 
 puts 'Creating 5 fake users...'
 
