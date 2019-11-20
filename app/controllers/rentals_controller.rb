@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_product, only: [:new]
+  before_action :set_product, only: [:new, :create]
 
   def index
 
@@ -11,7 +11,15 @@ class RentalsController < ApplicationController
   end
 
   def create
-
+    @rental = current_user.rentals.build(params_rental)
+    @rental.product = @product
+    authorize @rental
+    if @rental.save
+      redirect_to @product, notice: "Rental successfully created"
+    else
+      render :new
+    end
+  end
   end
 
   def edit
@@ -27,6 +35,10 @@ class RentalsController < ApplicationController
   end
 
   private
+
+  def params_rental
+    params.require(:rental).permit(:date_start, :date_end)
+  end
 
   def set_product
     @product = Product.find(params[:product_id])
