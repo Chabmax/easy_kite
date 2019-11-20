@@ -1,5 +1,5 @@
 <div class="container mt-4">
-
+<%= link_to "Add rental", new_product_rental_path(@product), class: "btn btn-danger"  %>
 <!-- carousel -->
   <p>Posted by <%= @product.user.first_name %> <%= @product.user.last_name %></p>
   <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
