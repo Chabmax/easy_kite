@@ -1,15 +1,5 @@
 <div class="container mt-4">
 
-
-  <% if policy(@product).edit? %>
-    <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
-  <% end %>
-  <% if policy(@product).destroy? %>
-    <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>
-    <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
-  <% end %>
-
-
 <!-- carousel -->
   <p>Posted by <%= @product.user.first_name %> <%= @product.user.last_name %></p>
   <div id="carouselExampleControls" class="carousel slide mt-0" data-ride="carousel">
@@ -187,4 +177,11 @@ REVUES
 
 
 
+  <% if policy(@product).edit? %>
+    <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
+  <% end %>
+  <% if policy(@product).destroy? %>
+    <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>
+    <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
+  <% end %>
 
