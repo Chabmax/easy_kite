@@ -4,6 +4,15 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
+    @products = Product.geocoded
+
+    @markers = @products.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { product: product })
+      }
+    end
   end
 
   def show

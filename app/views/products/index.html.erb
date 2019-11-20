@@ -15,6 +15,7 @@
   </div>
 </div>
 
+
 <div class="container d-flex">
   <div class="grid-wrapper">
     <% @products.each do |product| %>
@@ -35,8 +36,11 @@
       <%end %>
     <% end %>
   </div>
-  <div class="map">
-    <h1> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nulla eum asperiores sint itaque animi nobis nemo dicta aliquam inventore eveniet natus, aperiam iusto quidem odio dolores officiis, quo nesciunt!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit adipisci veritatis modi magnam perferendis aliquid id. Nemo, doloremque alias asperiores aut eligendi maxime ullam dicta accusantium blanditiis exercitationem enim excepturi?Toto </h1>
-  </div>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 </div>
