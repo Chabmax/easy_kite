@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :rentals, only: [ :index, :new, :create, :edit, :update, :destroy ]
   end
 
+  get '/dashboard', to: 'pages#dashboard'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
