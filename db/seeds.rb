@@ -1,7 +1,12 @@
 puts 'Cleaning database...'
+Rental.destroy_all
+puts 'all rentals destroyed'
 User.destroy_all
+puts 'all users destroyed'
 Product.destroy_all
-
+puts 'all products destroyed'
+Rental.destroy_all
+puts 'all rentals destroyed'
 puts 'Creating 5 fake users...'
 
 toto = User.create!({
@@ -39,24 +44,25 @@ puts 'Creating fake products...'
 
 p1 = Product.create!({
   category: "aile",
-  brand: "surfbrand",
+  brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "11 rue de la mer",
+  address: "157 Rue du Po, 56340 Carnac",
 
 })
 p2 = Product.create!({
   category: "planche",
-  brand: "surfbrand",
+  brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "11 rue de la mer",
+  address: "2 Rue Florian Laporte, 56100 Lorient",
 
 })
+
 p3 = Product.create!({
   category: "harnais",
   brand: "surfbrand",
@@ -107,26 +113,18 @@ Product.create!({
   address: "11 rue de la mer",
 
 })
+
 Product.create!({
-  category: "aile",
-  brand: "surfbrand",
+  category: "planche",
+  brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "11 rue de la mer",
+  address: "9 Rue des Falaises, 66290 Cerbère",
 
 })
-Product.create!({
-  category: "kit complet",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: titi.id,
-  address: "11 rue de la mer",
 
-})
 
 Rental.create!({
   user_id: titi.id,

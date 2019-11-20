@@ -1,2 +1,5 @@
 <h2><%= product.category %></h2>
 <p><%= product.address %></p>
+<% if product.photos.present? %>
+  <%= cl_image_tag product.photos.first.key, class:'d-block w-100', height: 200, width: 100, crop: :fill %>
+<% end %>

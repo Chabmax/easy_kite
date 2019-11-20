@@ -22,7 +22,13 @@
     <% @products.each do |product| %>
       <%= link_to product_path(product[:id]) do %>
           <div class="card-trip">
-            <img src="https://source.unsplash.com/1600x900/?kitesurf" />
+           <% if product.photos.attached? %>
+
+            <%= cl_image_tag product.photos.first.key, class:'d-block w-100',crop: :fill %>
+
+             <% else %>
+             <%= image_tag "https://source.unsplash.com/featured/500X1200/?kitesurf", class:"d-block w-100", crop: :fill %>
+            <% end %>
             <div class="card-trip-infos">
               <div>
                 <h2><%= product.brand.capitalize %></h2>
