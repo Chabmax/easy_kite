@@ -2,16 +2,25 @@ class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
-  validates :date_start, presence: true, uniqueness: true
-  validates :date_end, presence: true, uniqueness: true
-  validate :date_end_is_after_date_start?
-  validate :date_start_is_after_or_equal_today?
+  validates :date_start, :date_end, presence: true
+  validate :start_date_after_today?
+  validate :end_date_after_start_date?
 
-  def date_start_is_after_or_equal_today?
-    Date.today <= date_start
+  private
+
+  def start_date_after_today?
+    return if date_start.blank?
+
+    if date_start < Date.today
+      errors.add(:date_start, "must be equal or after today")
+    end
   end
 
-  def date_end_is_after_date_start?
-    date_start <= date_end
+  def end_date_after_start_date?
+    return if date_end.blank? || date_start.blank?
+
+    if date_end < date_start
+      errors.add(:date_end, "must be after the start date")
+    end
   end
 end
