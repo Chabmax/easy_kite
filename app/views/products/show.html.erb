@@ -37,10 +37,14 @@
   </div>
   <div class="card-show mr-3">
     <div class="text-center">
-      <% @product.rentals.each do |rental| %>
-      <p><%= rental.date_start %></p>
-      <p><%= rental.date_end %></p>
-      <%end %>
+      <% if @product.rentals.present? %>
+        <h2>🗓 Already Booked : 🗓  </h2>
+        <% @product.rentals.each do |rental| %>
+          <p>From <%= rental.date_start %> to <%= rental.date_end %></p>
+        <%end %>
+      <% else %>
+        <h2> 🚀 Available for Booking 🚀 </h2>
+      <% end %>
     </div>
   </div>
 <div>
@@ -85,11 +89,15 @@
       <% end %>
     </div>
   </div>
-
-
-GEO LOC
 <div class="container col-9 mt-2">
-      <%= image_tag "https://source.unsplash.com/featured/300X1200/?maps", height: 300, width: 400, crop: :fill %>
-
+  <% if policy(@product).edit? %>
+    <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
+  <% end %>
+  <% if policy(@product).destroy? %>
+    <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>
+    <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
+  <% end %>
 </div>
+
+
 
