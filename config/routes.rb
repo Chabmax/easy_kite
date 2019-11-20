@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   resources :products do
-    resources :rentals, only: [ :index, :new, :create, :edit, :update, :destroy ]
+    resources :rentals, only: [ :index, :new, :create, :edit, :update ]
   end
+
+  resources :rentals, only: [:destroy, :edit, :update]
 
   get '/dashboard', to: 'pages#dashboard'
 

@@ -37,7 +37,7 @@ titi = User.create!({
 
 puts 'Creating fake products...'
 
-Product.create!({
+p1 = Product.create!({
   category: "aile",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
@@ -47,7 +47,7 @@ Product.create!({
   address: "11 rue de la mer",
 
 })
-Product.create!({
+p2 = Product.create!({
   category: "planche",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
@@ -57,7 +57,7 @@ Product.create!({
   address: "11 rue de la mer",
 
 })
-Product.create!({
+p3 = Product.create!({
   category: "harnais",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
@@ -67,7 +67,7 @@ Product.create!({
   address: "11 rue de la mer",
 
 })
-Product.create!({
+p4 = Product.create!({
   category: "barre",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
@@ -127,5 +127,20 @@ Product.create!({
   address: "11 rue de la mer",
 
 })
+
+Rental.create!({
+  user_id: titi.id,
+  product_id: p1,
+  date_start: DateTime.new(2020,1,1),
+  date_end: DateTime.new(2020,2,1),
+})
+
+Rental.create!({
+  user_id: titi.id,
+  product_id: p2,
+  date_start: DateTime.new(2020,2,14),
+  date_end: DateTime.new(2020,2,16),
+})
+
 
 puts 'Finished!'
