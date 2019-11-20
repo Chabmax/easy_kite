@@ -12,6 +12,7 @@ class RentalsController < ApplicationController
 
   def create
     @rental = current_user.rentals.build(params_rental)
+    @product.rentals
     @rental.product = @product
     authorize @rental
     if @rental.save
