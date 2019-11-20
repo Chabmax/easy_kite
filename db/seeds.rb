@@ -45,7 +45,7 @@ Product.create!({
   price: rand(50..150),
   user_id: toto.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "planche",
@@ -55,17 +55,17 @@ Product.create!({
   price: rand(50..150),
   user_id: toto.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
-  category: "harnai",
+  category: "harnais",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "barre",
@@ -75,7 +75,7 @@ Product.create!({
   price: rand(50..150),
   user_id: toto.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "kit complet",
@@ -85,7 +85,7 @@ Product.create!({
   price: rand(50..150),
   user_id: tonton.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "accessoires",
@@ -95,7 +95,7 @@ Product.create!({
   price: rand(50..150),
   user_id: tata.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "kit complet",
@@ -105,7 +105,7 @@ Product.create!({
   price: rand(50..150),
   user_id: tata.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "aile",
@@ -115,7 +115,7 @@ Product.create!({
   price: rand(50..150),
   user_id: toto.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 Product.create!({
   category: "kit complet",
@@ -125,7 +125,7 @@ Product.create!({
   price: rand(50..150),
   user_id: titi.id,
   address: "11 rue de la mer",
-  city: "Berk"
+
 })
 
 puts 'Finished!'
