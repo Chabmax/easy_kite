@@ -16,7 +16,7 @@
 </div>
 
 
-<div class="container d-flex">
+<div class="container-fluid d-flex">
 
   <div class="grid-wrapper" style="width: 60%;">
     <% @products.each do |product| %>
@@ -46,7 +46,7 @@
 
   <div
     id="map"
-    style="width: 40%;
+    style="width: 38%;
     height: 100vh;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
