@@ -28,14 +28,22 @@
 
 <!-- nom - proposé par + Avatar -->
 <div class="container col-9 d-flex justify-content-between">
-  <div class="card-show text-center mr-3">
+  <div class="card-show mr-3">
     <div class="text-center">
       <p>proposé(e) par </p>
          <img src="https://kitt.lewagon.com/placeholder/users/BrianRid" class="card-show-user avatar-bordered-show" />
       <p><%= @product.user.first_name%> <%= @product.user.last_name%></p>
     </div>
   </div>
-  <div>
+  <div class="card-show mr-3">
+    <div class="text-center">
+      <% @product.rentals.each do |rental| %>
+      <p><%= rental.date_start %></p>
+      <p><%= rental.date_end %></p>
+      <%end %>
+    </div>
+  </div>
+<div>
     <%= link_to "Add rental", new_product_rental_path(@product), class: "btn btn-info"  %>
   </div>
 </div>
@@ -80,123 +88,8 @@
 
 
 GEO LOC
-<div>
+<div class="container col-9 mt-2">
       <%= image_tag "https://source.unsplash.com/featured/300X1200/?maps", height: 300, width: 400, crop: :fill %>
 
 </div>
-
-
-REVUES
-<div>
-<h1></h1>
-<p></p>
-</div>
-
-<div>
-<h1></h1>
-<p></p>
-</div>
-
-
-  <div class="card-user">
-<!-- Card avatar -->
-    <% if @product.photos.attached? %>
-    <!-- sinon photos.present? ou unless photos[0]. -->
-      <% @product.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-    <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kyte", height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <div class="card-user-infos">
-      <h2><%= @product.user.first_name%> <%= @product.user.last_name%></h2>
-
-    </div>
-  </div>
-
-
-
-<div class="bookDate">
-          <div class="">
-              <div class="bookDateContainer">
-    <div class="entry">
-        <label class="label" for="date-from">Sélectionnez vos dates :</label>
-        <div class="datepicker">
-    <div id="date-from" class="pickDate" disabled="" data-datepicker-ex="1">
-        <span class="placeholderFrom">Début</span>
-        <span class="from" data-date="">
-            <span data-date-from=""></span>
-            <span data-time-from=""></span>
-        </span>
-        <span class="icon-interface-right"></span>
-        <span class="to" data-date="">
-            <span data-date-to=""></span>
-            <span data-time-to=""></span>
-        </span>
-        <span class="placeholderTo">Fin</span>
-    </div>
-
-
-
-    <div class="extra" style="display:none">
-        <div data-id="dpReleaseMorningCont" style="display:none">
-            <input type="checkbox" id="dpReleaseMorning_4rhtybv68h1574174481421" data-id="dpReleaseMorning" class="style">
-            <label for="dpReleaseMorning_4rhtybv68h1574174481421" class="label"><span></span> Je libère le bateau dans la matinée</label>
-        </div>
-
-        <div data-id="dpHalfDayDetails" style="display:none">
-            <div data-id="dpHalfDayCont">
-                <input type="checkbox" id="dpHalfDay_w645m8384j1574174481422" data-id="dpHalfDay" class="style">
-                <label for="dpHalfDay_w645m8384j1574174481422" class="label"><span></span> Demi-journée</label>
-            </div>
-
-            <div class="selectPure" data-id="dpHalfDayPeriodCont" style="display:none">
-                <select id="dpHalfDayPeriod" data-id="dpHalfDayPeriod" tabindex="0" class="selectStyle">
-                    <option value="1" selected="">Matin</option>
-                    <option value="2">Après-midi</option>
-                </select>
-            </div>
-        </div>
-
-            </div>
-</div>    </div>
-
-    <div class="price details-booking hide">
-        <ul>
-            <li>
-                <ul class="pricePerExtras">
-                </ul>
-            </li>
-            <li class="totalPrice">
-                <label class="label">Total</label>
-                <div class="h4 result"><span></span>€</div>
-            </li>
-            <li id="auto-pc">
-                <label class="label">Promotions <span id="auto-pc-percentage"></span></label>
-                <div class="h6" id="result">-<span id="auto-pc-discount" data-exchange-rate="1"></span>€                </div>
-            </li>
-            <li class="newTotalPrice">
-                <label class="label">Total</label>
-                <div class="h6 result"><span></span>€</div>
-            </li>
-        </ul>
-    </div>
-
-    <div id="dates-not-available"></div>
-</div>          </div>
-
-        <div class="action" data-owner-ad="false">
-            <button class="btn submit js-open-popin send-message xl" data-popin-target="sendMessageModal">Envoyer un message</button>
-            <span>Ou</span>
-
-
-
-
-  <% if policy(@product).edit? %>
-    <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
-  <% end %>
-  <% if policy(@product).destroy? %>
-    <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>
-    <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
-  <% end %>
 
