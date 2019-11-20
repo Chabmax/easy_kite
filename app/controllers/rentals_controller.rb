@@ -2,7 +2,7 @@ class RentalsController < ApplicationController
   before_action :set_product, only: [:new, :create]
 
   def index
-
+    @rentals = policy_scope(Rentals)
   end
 
   def new
