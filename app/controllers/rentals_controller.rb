@@ -1,10 +1,13 @@
 class RentalsController < ApplicationController
+  before_action :set_product, onlt: [:new]
+
   def index
 
   end
 
   def new
-
+    @rental = Rental.new
+    authorize @rental
   end
 
   def create
@@ -21,5 +24,11 @@ class RentalsController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 end
