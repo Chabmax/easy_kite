@@ -1,5 +1,6 @@
 class RentalsController < ApplicationController
-  before_action :set_product, only: [:new, :create]
+  before_action :set_product, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_rental, only: [:edit, :update, :destroy]
 
   def index
     @rentals = policy_scope(Rentals)
@@ -26,21 +27,30 @@ class RentalsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @rental.update(params_product)
+      redirect_to @product, notice: "Rental successfully updated"
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @rental.destroy
+    redirect_to @product, notice: "Rental successfully deleted"
   end
 
   private
 
   def params_rental
     params.require(:rental).permit(:date_start, :date_end)
+  end
+
+  def set_rental
+    @rental = Rental.find(params[:id])
+    authorize @rental
   end
 
   def set_product
