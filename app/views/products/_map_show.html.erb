@@ -1,0 +1,13 @@
+<div
+    id="map"
+    style="width: 60%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>

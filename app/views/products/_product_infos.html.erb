@@ -1,0 +1,24 @@
+  <div class="container col-9 mt-2">
+    <div class="card-product">
+      <div class="card-title px-2">
+        <h1>Caractéristiques produit </h1>
+      </div>
+      <div class="card-body px-2">
+        <div class="category">
+          <h2> Category: <%= @product.category.capitalize %></h2>
+        </div>
+        <div class="brand">
+          <h2> Brand: <%= @product.brand.capitalize %> </h2>
+        </div>
+        <div class="description">
+          <p>  Description: <%= @product.description %></p>
+        </div>
+        <div class="material">
+          <h2> Material review: <%= @product.status %> </h2>
+        </div>
+        <div class="price">
+          <h2> Price: <%= @product.price %> € </h2>
+        </div>
+      </div>
+    </div>
+  </div>

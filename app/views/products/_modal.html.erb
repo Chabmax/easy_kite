@@ -1,0 +1,62 @@
+  <div class="card-show mr-3 text-center">
+    <div class="text-center">
+      <% if @product.rentals.present? %>
+        <h2>🗓 Already Booked : 🗓  </h2>
+        <% @product.rentals.each do |rental| %>
+          <p>From <%= rental.date_start %> to <%= rental.date_end %></p>
+        <%end %>
+      <% else %>
+        <h2> 🚀 Available for Booking 🚀 </h2>
+      <% end %>
+    </div>
+
+    <% if @rental.errors.any? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <p>
+        Sorry! But <%= pluralize(@rental.errors.count, "error") %> prevented the rental being saved:
+      </p>
+      <ul>
+        <% @rental.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <p>
+        Please try again after correction
+      </p>
+    </div>
+    <% end %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModalCenter">
+      Book
+    </button>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Want to book <%= @product.category.capitalize %> <%= @product.brand.capitalize %></h5>
+            <h6>Localized : <%= @product.address.capitalize %></h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <%= simple_form_for [@product, @rental] do |f| %>
+          <div class="modal-body">
+            <div class="rental-infos mx-5">
+              <!-- date picker -->
+              <%= f.input :date_start, as: :date, html5: true, wrapper_html: { class: 'form-inline justify-content-between' }, placeholder: 'Date start' %>
+              <%= f.input :date_end, as: :date, html5: true, wrapper_html: { class: 'form-inline justify-content-between' } %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= f.submit class: 'btn btn-primary'%>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
