@@ -28,7 +28,7 @@
 }
 
 .notification:hover .notification-actions {
-  opacity: 1;
+  opacity: 3;
 }
 
 .notification .notification-actions a {
@@ -38,5 +38,49 @@
 }
 
 .notification .notification-actions a:hover {
+  color: #555555;
+}
+
+.notification_produit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+  background: white;
+  padding: 2px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+
+.notification_produit .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.notification_produit p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification_produit small {
+  color: #999999;
+  font-weight: bold;
+}
+.notification_produit .notification-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.notification_produit:hover .notification-actions {
+  opacity: 3;
+}
+
+.notification_produit .notification-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.notification_produit .notification-actions a:hover {
   color: #555555;
 }

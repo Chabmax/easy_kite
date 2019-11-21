@@ -38,7 +38,6 @@ class RentalsController < ApplicationController
   end
 
   def destroy
-
     @rental.destroy
     redirect_to '/dashboard', notice: "Rental successfully deleted"
   end
