@@ -4,6 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../components/init_mapbox';
 import {initAutocomplete} from '../components/init_autocomplete';
 import filter from '../components/filter';
+import { initCarousel } from '../components/init_carousel';
 
 initSweetalert('#sweet-alert-delete', {
   title: "WARNING",
@@ -22,3 +23,4 @@ initSweetalert('#sweet-alert-delete', {
 initMapbox();
 initAutocomplete();
 filter();
+initCarousel();
