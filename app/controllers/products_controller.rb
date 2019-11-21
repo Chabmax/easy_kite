@@ -10,13 +10,12 @@ class ProductsController < ApplicationController
       {
         lat: product.latitude,
         lng: product.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { product: product })      }
+        infoWindow: render_to_string(partial: "info_window", locals: { product: product })}
     end
   end
 
   def show
     @rental = Rental.new
-
     @markers =
       [{
         lat: @product.latitude,
