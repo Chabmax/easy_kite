@@ -18,6 +18,11 @@ class ProductsController < ApplicationController
     # @product = Product.find(params[:id])
     # authorize @product
     @rental = Rental.new
+      @markers =
+      [{
+              lat: @product.latitude,
+              lng: @product.longitude
+            }]
   end
 
   def new
