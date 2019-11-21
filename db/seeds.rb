@@ -5,8 +5,6 @@ User.destroy_all
 puts 'all users destroyed'
 Product.destroy_all
 puts 'all products destroyed'
-Rental.destroy_all
-puts 'all rentals destroyed'
 puts 'Creating 5 fake users...'
 
 toto = User.create!({
