@@ -76,6 +76,7 @@
 .grid-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
   grid-gap: 16px;
   margin-top: 10px;
 }
