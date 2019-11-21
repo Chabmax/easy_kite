@@ -19,23 +19,26 @@
           <%= image_tag "https://source.unsplash.com/featured/500X400/?surf", class:"d-block w-100 height: 500px", height: 500, crop: :fill %>
         </div>
       <% end %>
-    </div>
-    <div class="border-right">
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </div>
-    <div class="border-left">
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
+    <% else %>
+      <%= image_tag "https://source.unsplash.com/featured/500X1200/?kitesurf", class:"d-block w-100", height: 500, width: 400, crop: :fill %>
+    <% end %>
   </div>
+  <div class="border-right">
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+  </div>
+  <div class="border-left">
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
 
-<!-- nom - proposé par + Avatar -->
 <div class="container col-9 d-flex justify-content-between">
+  <!-- nom - proposé par + Avatar -->
   <div class="card-show mr-3">
     <div class="text-center">
       <p>proposé(e) par </p>
@@ -43,6 +46,7 @@
       <p><%= @product.user.first_name%> <%= @product.user.last_name%></p>
     </div>
   </div>
+  <!-- Booked Informations -->
   <div class="card-show mr-3">
     <div class="text-center">
       <% if @product.rentals.present? %>
@@ -54,52 +58,105 @@
         <h2> 🚀 Available for Booking 🚀 </h2>
       <% end %>
     </div>
+    <!-- Errors Rental informations -->
+    <% if @rental.errors.any? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <p>
+        Sorry! But <%= pluralize(@rental.errors.count, "error") %> prevented the rental being saved:
+      </p>
+      <ul>
+        <% @rental.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <p>
+        Please try again after correction
+      </p>
+    </div>
+    <% end %>
   </div>
-<div>
-    <%= link_to "Add rental", new_product_rental_path(@product), class: "btn btn-info"  %>
+
+  <div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Add rental
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Want to book <%= @product.category.capitalize %> <%= @product.brand.capitalize %></h5>
+            <h6>Localized : <%= @product.address.capitalize %></h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <%= simple_form_for [@product, @rental] do |f| %>
+          <div class="modal-body">
+            <div class="rental-infos mx-5">
+              <!-- date picker -->
+              <%= f.input :date_start, as: :date, html5: true, wrapper_html: { class: 'form-inline justify-content-between' }, placeholder: 'Date start' %>
+              <%= f.input :date_end, as: :date, html5: true, wrapper_html: { class: 'form-inline justify-content-between' } %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= f.submit class: 'btn btn-primary'%>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-  <!-- carractéristiques produit -->
-  <div class="container col-9 mt-2">
-    <div class="card-product">
-      <div class="card-title px-2">
-        <h1>Caractéristiques produit </h1>
+
+<!-- carractéristiques produit -->
+<div class="container col-9 mt-2">
+  <div class="card-product">
+    <div class="card-title px-2">
+      <h1>Caractéristiques produit </h1>
+    </div>
+    <div class="card-body px-2">
+      <div class="category">
+        <h2> Category: <%= @product.category.capitalize %></h2>
       </div>
-      <div class="card-body px-2">
-        <div class="category">
-          <h2> Category: <%= @product.category.capitalize %></h2>
-        </div>
-        <div class="brand">
-          <h2> Brand: <%= @product.brand.capitalize %> </h2>
-        </div>
-        <div class="description">
-          <p>  Description: <%= @product.description %></p>
-        </div>
-        <div class="material">
-          <h2> Material review: <%= @product.status %> </h2>
-        </div>
-        <div class="price">
-          <h2> Price: <%= @product.price %> € </h2>
-        </div>
+      <div class="brand">
+        <h2> Brand: <%= @product.brand.capitalize %> </h2>
+      </div>
+      <div class="description">
+        <p>  Description: <%= @product.description %></p>
+      </div>
+      <div class="material">
+        <h2> Material review: <%= @product.status %> </h2>
+      </div>
+      <div class="price">
+        <h2> Price: <%= @product.price %> € </h2>
       </div>
     </div>
   </div>
-  <!-- Photos -->
-  <div class="container col-9 mt-2">
-    <div class="picture-wrapper">
-     <% if @product.photos.attached? %>
-      <!-- sinon photos.present? ou unless photos[0]. -->
-        <% @product.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "picture-item"%>
-        <% end %>
-      <% else %>
-        <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
+</div>
+
+<!-- Photos -->
+<div class="container col-9 mt-2">
+  <div class="picture-wrapper">
+   <% if @product.photos.attached? %>
+    <!-- sinon photos.present? ou unless photos[0]. -->
+      <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "picture-item"%>
       <% end %>
-    </div>
+    <% else %>
+      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
+    <% end %>
   </div>
+</div>
+
+<!-- Edit and Delete Buttons -->
 <div class="container col-9 mt-2">
   <% if policy(@product).edit? %>
-    <%= link_to "Edit your product", edit_product_path, class: "btn btn-success shadow mb-2"  %>
+    <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-success shadow mb-2"  %>
   <% end %>
   <% if policy(@product).destroy? %>
     <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>

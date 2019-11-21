@@ -19,10 +19,10 @@ class RentalsController < ApplicationController
       if @rental.save
         redirect_to @product, notice: "Rental successfully created"
       else
-        render :new
+        render "products/show"
       end
     else
-      render :new
+      render "products/show"
     end
   end
 
