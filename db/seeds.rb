@@ -39,9 +39,6 @@ titi = User.create!({
 })
 
 puts 'Creating fake products...'
-
-Product.create!({
-
 p1 = Product.create!({
 
   category: "kite",
@@ -52,8 +49,6 @@ p1 = Product.create!({
   user_id: toto.id,
   address: "157 Rue du Po, 56340 Carnac"
 })
-
-Product.create!({
 
 puts 'product 1'
 
