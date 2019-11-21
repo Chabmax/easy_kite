@@ -1,61 +1,174 @@
 
 
-  <div class="container">
-    <div class="container col-9 mt-2 ">
-  <h4>  Vue par produits</h4>
-      <%  @user.products.each do |p| %>
-        <div class="border-bottom">
-            <%=  link_to product_path(p) do %>
-                 <%= p.category %><%= p.brand %>
-            <% end %>
 
-            <% p.rentals.order(date_start: :asc).each do |rental| %>
-              <div class="notification">
-                <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-mini" />
-                <div class="notification-content">
-                  <%= rental.date_start %> to <%= rental.date_end %>
-                </div>
-                    <p><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€</p>
-                  <div class="notification-actions">
-                  <% if policy(rental).edit? %>
-                    <%= link_to 'Edit <i class="fas fa-pencil-alt"></i>'.html_safe, edit_rental_path(rental) %>
-                  <% end %>
 
-                  <% if policy(rental).destroy? %>
-                    <%= link_to 'Delete <i class="far fa-trash-alt"></i>'.html_safe, rental, :method => :delete, data: { confirm: 'Are you sure?' }  %>
-                  <% end %>
+<%=  @user.products.first.user.first_name %>
+<%=  @user.products.first.user.first_name %>
+<%=  @user.products.first.user.first_name %>
+<div class="container">
 
-                </div>
-              </div>
-            <% end %>
-          </div>
-      <% end %>
+
+
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
+    <button class="tablinks" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
+  </div>
+
+  <div id="OWNER" class="product-container tabcontent">
+    <div class="d-flex">
+      <div class="div-dte">
+        <h5 class="title-table">MY PRODUCTS</h5>
+        <table class="table-rentals table">
+        <%  @user.products.each do |product| %>
+          <%=  link_to product_path(product) do %>
+            <div>
+              <tr>
+                <td><%= product.category %><%= product.brand %></td>
+                <td><% if policy(product).edit? %>
+                  <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_product_path(product) %>
+                <% end %></td>
+                <td><% if policy(product).destroy? %>
+                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, products_path, :method => :delete, data: { confirm: 'Are you sure?' }  %>
+                <% end %></td>
+              </tr>
+            </div>
+          <% end %>
+        <% end %>
+        </table>
+      </div>
+      <div class="div-gauche">
+       <h5 class="title-table">FUTURE RENTALS</h5>
+      <table class="table-rentals table">
+        <thead>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Rented FROM</th>
+          <th>PRICE</th>
+        </thead>
+        <tbody>
+        <% @rented.each do |rental| %>
+
+          <% if rental.date_start >= Time.now %>
+            <tr>
+              <td><%= rental.product.brand %></td>
+              <td><%= rental.product.category %></td>
+              <td><%= rental.date_start %></td>
+              <td><%= rental.date_end %></td>
+              <td><%= rental.user.first_name %></td>
+              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+            </tr>
+          <% end %>
+
+
+        <% end  %>
+        </tbody>
+      </table>
+        <h5 class="title-table">PAST RENTALS</h5>
+        <table class="table-rentals table">
+        <thead>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Rented FROM</th>
+          <th>PRICE</th>
+        </thead>
+        <tbody>
+        <% @rentals.each do |rental| %>
+          <% if rental.date_start <= Time.now %>
+          <tr>
+            <td><%= rental.product.brand %></td>
+            <td><%= rental.product.category %></td>
+            <td><%= rental.date_start %></td>
+            <td><%= rental.date_end %></td>
+            <td><%= rental.user.first_name %></td>
+            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+          </tr>
+          <% end %>
+        <% end  %>
+        </tbody>
+        </table>
+
+      </div>
+
+
+
     </div>
+  </div>
+  <div id="RENTER" class="product-container tabcontent">
+      <h5 class="title-table">FUTURE RENTALS</h5>
+         <table class="table-rentals table">
+        <thead>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>PRICE</th>
+        </thead>
+        <tbody>
+        <% @rented.each do |rental| %>
 
-    <div class="container col-9 mt-2">
-  <p>  Vue par date </p>
-      <% @rentals.each do |rental| %>
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar" />
-          <div class="notification-content">
-            <h4> <%= rental.product.category %> <%= rental.product.brand %></h4>
-            <%= rental.date_start %> to <%= rental.date_end %>
-          </div>
-             <p><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€</p>
-          <div class="notification-actions">
+          <% if rental.date_start <= Time.now %>
+            <tr>
+              <td><%= rental.product.brand %></td>
+              <td><%= rental.product.category %></td>
+              <td><%= rental.date_start %></td>
+              <td><%= rental.date_end %></td>
+              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+            </tr>
+          <% end %>
+        <% end  %>
+        </tbody>
+      </table>
 
-            <% if policy(rental).edit? %>
-              <%= link_to 'Edit <i class="fas fa-pencil-alt"></i>'.html_safe, edit_rental_path(rental) %>
-            <% end %>
+    <h5 class="title-table">PAST RENTALS</h5>
+       <table class="table-rentals table">
+        <thead>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>PRICE</th>
+        </thead>
+        <tbody>
+        <% @rented.each do |rental| %>
+                  <% if rental.date_start <= Time.now %>
+          <tr>
+            <td><%= rental.product.brand %></td>
+            <td><%= rental.product.category %></td>
+            <td><%= rental.date_start %></td>
+            <td><%= rental.date_end %></td>
+            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+          </tr>
+          <% end %>
+        <% end  %>
+        </tbody>
+        </table>
 
-            <% if policy(rental).destroy? %>
-              <%= link_to 'Delete <i class="far fa-trash-alt"></i>'.html_safe, rental, :method => :delete, data: { confirm: 'Are you sure?' }  %>
-            <% end %>
 
 
+  </div>
 
-          </div>
-        </div>
-      <% end %>
-    </div>
 </div>
+
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
