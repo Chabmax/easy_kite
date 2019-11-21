@@ -40,7 +40,10 @@ titi = User.create!({
 
 puts 'Creating fake products...'
 
+Product.create!({
+
 p1 = Product.create!({
+
   category: "kite",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
@@ -49,9 +52,13 @@ p1 = Product.create!({
   user_id: toto.id,
   address: "157 Rue du Po, 56340 Carnac"
 })
+
+Product.create!({
+
 puts 'product 1'
 
 p2 = Product.create!({
+
   category: "board",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
@@ -85,6 +92,7 @@ p4 = Product.create!({
 puts 'product 4'
 
 Product.create!({
+
   category: "full kite",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
