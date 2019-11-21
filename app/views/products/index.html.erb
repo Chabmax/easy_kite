@@ -1,9 +1,10 @@
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://www.voiledetraction.fr/wp-content/uploads/kitesurf-sicily-the-best-offers-in-kitesurf-for-a-sport.jpeg);">
   <div class="container">
     <h1>Easy Kite</h1>
     <p> La meilleure solution pour s'envoyer en l'air</p>
     <br>
+  </div>
+
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control form-group d-flex">
         <input id="kite-search" class="form-control string required" type="text" name="search[query]" id="search_query" />
@@ -13,14 +14,21 @@
       </div>
     <% end %>
   </div>
-</div>
+    <div class="container-fluid d-flex justify-content-between">
+      <% Product.categories.each do |category| %>
+        <div class="card-category">
+          <p><%= category.capitalize %></p>
+        </div>
+      <% end %>
+      <div class="card-category remove-filters">Remove Filters</div>
+    </div>
 
 
 <div class="container-fluid d-flex">
 
   <div class="grid-wrapper" style="width: 60%;">
     <% @products.each do |product| %>
-      <%= link_to product_path(product[:id]) do %>
+      <%= link_to product_path(product[:id]), data: {category: product.category} do %>
           <div class="card-trip">
            <% if product.photos.attached? %>
 

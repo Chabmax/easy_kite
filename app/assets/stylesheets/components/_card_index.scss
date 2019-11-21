@@ -71,6 +71,26 @@
 
 }
 
+
+// Cards Category
+.card-category {
+  width: 100px;
+  height: 40px;
+  background-color: $green;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding-top: 8px;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+}
 // Card Display rules
 
 .grid-wrapper {

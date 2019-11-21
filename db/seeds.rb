@@ -42,7 +42,7 @@ titi = User.create!({
 puts 'Creating fake products...'
 
 Product.create!({
-  category: "aile",
+  category: "kite",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
@@ -52,7 +52,7 @@ Product.create!({
 
 })
 Product.create!({
-  category: "planche",
+  category: "board",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
@@ -62,7 +62,7 @@ Product.create!({
 
 })
 Product.create!({
-  category: "planche",
+  category: "board",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
