@@ -5,6 +5,7 @@ import { initMapbox } from '../components/init_mapbox';
 import {initAutocomplete} from '../components/init_autocomplete';
 import filter from '../components/filter';
 import { initCarousel } from '../components/init_carousel';
+import { loadDynamicBannerText } from '../components/banner';
 
 initSweetalert('#sweet-alert-delete', {
   title: "WARNING",
@@ -24,3 +25,4 @@ initMapbox();
 initAutocomplete();
 filter();
 initCarousel();
+loadDynamicBannerText();
