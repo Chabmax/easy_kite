@@ -6,3 +6,22 @@
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
+
+#map{
+  top: 80px;
+  bottom: 80px;
+  margin-left: 25px;
+  margin-right: -25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.map-show{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
