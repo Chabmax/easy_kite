@@ -1,6 +1,23 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+}
+
+.navbar-lewagon-default {
+  background-color: white;
+  transition: 0.5s background-color ease;
+
+  .nav-item .nav-link {
+    color: black;
+  }
+}
+
+.navbar-lewagon-banner {
+  background-color: rgba(0,0,0,0.2);
+  transition: 0.5s background-color ease;
+
+  .nav-item .nav-link {
+    color: white;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
