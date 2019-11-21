@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
+
+  def rentals_as_owner
+    products.map(&:rentals).flatten.sort_by(&:date_start)
+  end
 end

@@ -1,16 +1,10 @@
 
-
-
-
-<%=  @user.products.first.user.first_name %>
-<%=  @user.products.first.user.first_name %>
-<%=  @user.products.first.user.first_name %>
 <div class="container">
 
 
 
   <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
+    <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
     <button class="tablinks" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
   </div>
 
@@ -23,7 +17,7 @@
           <%=  link_to product_path(product) do %>
             <div>
               <tr>
-                <td><%= product.category %><%= product.brand %></td>
+                <td><%= product.category %> <%= product.brand %></td>
                 <td><% if policy(product).edit? %>
                   <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_product_path(product) %>
                 <% end %></td>
@@ -57,7 +51,7 @@
               <td><%= rental.date_start %></td>
               <td><%= rental.date_end %></td>
               <td><%= rental.user.first_name %></td>
-              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ </td>
             </tr>
           <% end %>
 
@@ -84,7 +78,7 @@
             <td><%= rental.date_start %></td>
             <td><%= rental.date_end %></td>
             <td><%= rental.user.first_name %></td>
-            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ </td>
           </tr>
           <% end %>
         <% end  %>
@@ -105,18 +99,19 @@
           <th>Category</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Rented TO</th>
           <th>PRICE</th>
         </thead>
         <tbody>
         <% @rented.each do |rental| %>
-
-          <% if rental.date_start <= Time.now %>
+          <% if rental.date_start >= Time.now %>
             <tr>
               <td><%= rental.product.brand %></td>
               <td><%= rental.product.category %></td>
               <td><%= rental.date_start %></td>
               <td><%= rental.date_end %></td>
-              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+              <td><%= rental.user.first_name %></td>
+              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€</td>
             </tr>
           <% end %>
         <% end  %>
@@ -130,6 +125,7 @@
           <th>Category</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Rented TO</th>
           <th>PRICE</th>
         </thead>
         <tbody>
@@ -140,17 +136,14 @@
             <td><%= rental.product.category %></td>
             <td><%= rental.date_start %></td>
             <td><%= rental.date_end %></td>
-            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+            <td><%= rental.user.first_name %></td>
+            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€</td>
           </tr>
           <% end %>
         <% end  %>
         </tbody>
         </table>
-
-
-
   </div>
-
 </div>
 
 
@@ -170,5 +163,6 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+document.getElementById("defaultOpen").click();
 </script>
 

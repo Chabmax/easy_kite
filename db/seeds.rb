@@ -40,7 +40,6 @@ titi = User.create!({
 
 puts 'Creating fake products...'
 p1 = Product.create!({
-
   category: "kite",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
@@ -87,7 +86,6 @@ p4 = Product.create!({
 puts 'product 4'
 
 Product.create!({
-
   category: "full kite",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
@@ -134,16 +132,35 @@ puts 'product 8'
 Rental.create!({
   user_id: titi.id,
   product_id: p1.id,
-  date_start: Date.new(2020,1,1),
-  date_end: Date.new(2020,2,1),
+  date_start: Date.new(2019,12,24),
+  date_end: Date.new(2020,12,25),
 })
 
 Rental.create!({
   user_id: titi.id,
   product_id: p2.id,
-  date_start: Date.new(2020,2,14),
-  date_end: Date.new(2020,2,16),
+  date_start: Date.new(2019,12,21),
+  date_end: Date.new(2020,11,21),
 })
 
+Rental.create!({
+  user_id: toto.id,
+  product_id: p3.id,
+  date_start: Date.new(2020,1,1),
+  date_end: Date.new(2020,2,1),
+})
 
+Rental.create!({
+  user_id: toto.id,
+  product_id: p4.id,
+  date_start: Date.new(2019,12,18),
+  date_end: Date.new(2019,12,19),
+})
+
+Rental.create!({
+  user_id: toto.id,
+  product_id: p4.id,
+  date_start: Date.new(2020,11,21),
+  date_end: Date.new(2020,11,21),
+})
 puts 'Finished!'
