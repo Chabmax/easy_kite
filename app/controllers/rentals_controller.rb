@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_product, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_product, only: [:new, :create]
   before_action :set_rental, only: [:edit, :update, :destroy]
 
   def index
@@ -30,8 +30,8 @@ class RentalsController < ApplicationController
   end
 
   def update
-    if @rental.update(params_product)
-      redirect_to @product, notice: "Rental successfully updated"
+    if @rental.update(params_rental)
+      redirect_to '/dashboard', notice: "Rental successfully updated"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental.destroy
-    redirect_to @product, notice: "Rental successfully deleted"
+    redirect_to '/dashboard', notice: "Rental successfully deleted"
   end
 
   private

@@ -6,6 +6,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @rentals = @user.rentals.order(date_start: :desc)
+    @rentals = @user.rentals.order(date_start: :asc)
   end
 end
