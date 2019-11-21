@@ -1,6 +1,13 @@
-<div class="container">
+<div class="container my-5">
   <h1>New rental</h1>
   <%= simple_form_for [@product, @rental] do |f| %>
+    <% if @rental.errors.any? %>
+    <ul>
+      <% @rental.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
     <div class="rental-infos col-lg-9">
       <!-- date picker -->
       <%= f.input :date_start, as: :date, html5: true %>
