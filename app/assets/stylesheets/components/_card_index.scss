@@ -83,7 +83,8 @@
   text-align: center;
   color: white;
   font-weight: bold;
-  padding-top: 8px;
+  padding-top: 10px;
+  font-size: 12px;
 
   &:hover {
     cursor: pointer;
@@ -91,6 +92,11 @@
   }
 }
 // Card Display rules
+
+.card-active {
+  background-color: $green;
+  opacity: 0.5;
+}
 
 .grid-wrapper {
   display: grid;
