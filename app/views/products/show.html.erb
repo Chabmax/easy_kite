@@ -4,19 +4,19 @@
         <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
       <% if @product.photos.attached? %>
           <div class="carousel-item active">
-            <%= cl_image_tag @product.photos.last.key, class:"d-block w-100 height: 400px", height: 400, width: 800, crop: :fill    %>
+            <%= cl_image_tag @product.photos.last.key, class:"carousel-img", height: 400, width: 800, crop: :fill    %>
           </div>
         <% @product.photos.each do |photo| %>
           <div class="carousel-item">
-            <%= cl_image_tag photo.key, class:"d-block w-100 height: 400px", height: 400, width: 800, crop: :fill    %>
+            <%= cl_image_tag photo.key, class:"carousel-img", height: 400, width: 800, crop: :fill    %>
           </div>
         <% end %>
       <% else %>
         <div class="carousel-item active">
-          <%= image_tag "https://source.unsplash.com/featured/500X400/?kitesurf", class:"d-block w-100 height: 500px", height: 500, crop: :fill %>
+          <%= image_tag "https://source.unsplash.com/featured/500X400/?kitesurf", class:"carousel-img", height: 500, crop: :fill %>
         </div>
         <div class="carousel-item">
-          <%= image_tag "https://source.unsplash.com/featured/500X400/?surf", class:"d-block w-100 height: 500px", height: 500, crop: :fill %>
+          <%= image_tag "https://source.unsplash.com/featured/500X400/?surf", class:"carousel-img", height: 500, crop: :fill %>
         </div>
       <% end %>
 
