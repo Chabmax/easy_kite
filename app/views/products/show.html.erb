@@ -135,12 +135,15 @@
       </div>
     </div>
   </div>
-  <div
+    <div
     id="map"
     style="width: 100%;
     position: relative;
     margin-left: 0px;
-    margin-right: 0px;"
+    margin-right: 0px;
+    border-radius: 5px;
+    margin-top: -70px;
+    margin-bottom: 92px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
@@ -171,6 +174,4 @@
     <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
   <% end %>
 </div>
-
-
 
