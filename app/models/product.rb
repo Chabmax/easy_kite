@@ -17,6 +17,7 @@ class Product < ApplicationRecord
 
   def self.categories
     CATEGORIES
+  end
 
   after_validation :add_city
   after_validation :add_country
