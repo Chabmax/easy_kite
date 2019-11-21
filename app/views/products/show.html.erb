@@ -6,7 +6,7 @@
           <div class="carousel-item active">
             <%= cl_image_tag @product.photos.last.key, class:"d-block w-100 height: 400px", height: 400, width: 800, crop: :fill    %>
           </div>
-        <% @product.photos.each_ do |photo| %>
+        <% @product.photos.each do |photo| %>
           <div class="carousel-item">
             <%= cl_image_tag photo.key, class:"d-block w-100 height: 400px", height: 400, width: 800, crop: :fill    %>
           </div>
