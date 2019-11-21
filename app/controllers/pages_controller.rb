@@ -7,10 +7,6 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @rentals = @user.rentals.order(date_start: :asc)
-
-    @rented = []
-    @user.products.each do |product|
-      @rented += product.rentals
-    end
+    @rented = @user.rentals_as_owner
   end
 end
