@@ -1,11 +1,10 @@
 puts 'Cleaning database...'
 Rental.destroy_all
-puts 'all rentals destroy'
+puts 'all rentals destroyed'
 User.destroy_all
-puts 'all users destroy'
+puts 'all users destroyed'
 Product.destroy_all
-puts 'all products destroy'
-
+puts 'all products destroyed'
 puts 'Creating 5 fake users...'
 
 toto = User.create!({
@@ -41,7 +40,7 @@ titi = User.create!({
 
 puts 'Creating fake products...'
 
-Product.create!({
+p1 = Product.create!({
   category: "aile",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
@@ -51,7 +50,7 @@ Product.create!({
   address: "157 Rue du Po, 56340 Carnac",
 
 })
-Product.create!({
+p2 = Product.create!({
   category: "planche",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
@@ -61,6 +60,58 @@ Product.create!({
   address: "2 Rue Florian Laporte, 56100 Lorient",
 
 })
+
+p3 = Product.create!({
+  category: "harnais",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id,
+  address: "11 rue de la mer",
+
+})
+p4 = Product.create!({
+  category: "barre",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: toto.id,
+  address: "11 rue de la mer",
+
+})
+Product.create!({
+  category: "kit complet",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tonton.id,
+  address: "11 rue de la mer",
+
+})
+Product.create!({
+  category: "accessoires",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tata.id,
+  address: "11 rue de la mer",
+
+})
+Product.create!({
+  category: "kit complet",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tata.id,
+  address: "11 rue de la mer",
+
+})
+
 Product.create!({
   category: "planche",
   brand: "Duotone",
@@ -70,6 +121,21 @@ Product.create!({
   user_id: toto.id,
   address: "9 Rue des Falaises, 66290 Cerbère",
 
+})
+
+
+Rental.create!({
+  user_id: titi.id,
+  product_id: p1,
+  date_start: DateTime.new(2020,1,1),
+  date_end: DateTime.new(2020,2,1),
+})
+
+Rental.create!({
+  user_id: titi.id,
+  product_id: p2,
+  date_start: DateTime.new(2020,2,14),
+  date_end: DateTime.new(2020,2,16),
 })
 
 
