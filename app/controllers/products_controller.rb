@@ -10,14 +10,17 @@ class ProductsController < ApplicationController
       {
         lat: product.latitude,
         lng: product.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { product: product })      }
+        infoWindow: render_to_string(partial: "info_window", locals: { product: product })}
     end
   end
 
   def show
-    # @product = Product.find(params[:id])
-    # authorize @product
     @rental = Rental.new
+    @markers =
+      [{
+        lat: @product.latitude,
+        lng: @product.longitude
+      }]
   end
 
   def new
