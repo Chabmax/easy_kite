@@ -93,6 +93,11 @@
 }
 // Card Display rules
 
+.card-active {
+  background-color: $green;
+  opacity: 0.5;
+}
+
 .grid-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;

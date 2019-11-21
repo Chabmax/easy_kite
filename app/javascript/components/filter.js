@@ -12,14 +12,14 @@ const hideCard = (productCards, categoryName) => {
   });
 }
 
-const changeButtonColor = () => {
-  console.log("color changed !");
+const changeButtonColor = (event) => {
+  event.currentTarget.classList.toggle('card-active')
 }
 
 const handleClickOnCard = (event) => {
   const productCards = document.querySelectorAll('[data-category]');
   const categoryName = event.target.innerText;
-  changeButtonColor();
+  changeButtonColor(event);
   hideCard(productCards, categoryName);
 }
 
