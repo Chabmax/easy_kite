@@ -18,7 +18,7 @@
 
 <div class="container-fluid d-flex">
 
-  <div class="grid-wrapper" style="width: 60%;">
+  <div class="grid-wrapper">
     <% @products.each do |product| %>
       <%= link_to product_path(product[:id]) do %>
           <div class="card-trip">
@@ -31,12 +31,16 @@
             <% end %>
             <div class="card-trip-infos">
               <div>
-                <h2><%= product.brand.capitalize %></h2>
-                <h3><%= product.category.capitalize %></h3>
-                <p><%= product.description %></p>
-                <p><%= product.status %></p>
+                <h2><%= product.category.capitalize %></h2>
+                <h3><%= product.brand.capitalize %></h3>
+                <% if product.city.present? && product.country.present? %>
+                  <p><%= product.city %>, <%= product.country %></p>
+                <% else %>
+                  <p><%= product.address %></p>
+                <% end %>
+                <p>by : <em><%= product.user.full_name %></em></p>
               </div>
-              <h2 class="card-trip-pricing"><%= product.price %>€</h2>
+              <h2 class="card-trip-pricing"><%= product.price %>€<small>/day</small></h2>
               <img src="https://kitt.lewagon.com/placeholder/users/Chabmax" class="card-trip-user avatar-bordered" />
             </div>
          </div>
@@ -46,8 +50,6 @@
 
   <div
     id="map"
-    style="width: 38%;
-    height: 100vh;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>

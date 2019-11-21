@@ -12,5 +12,18 @@ class Product < ApplicationRecord
   validates :address, presence: true
 
   geocoded_by :address
+
   after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :add_city
+  after_validation :add_country
+
+  private
+
+  def add_city
+    self.city = Geocoder.search(address).first.present? ? Geocoder.search(address).first.city : "NC"
+  end
+
+  def add_country
+    self.country = Geocoder.search(address).first.present? ? Geocoder.search(address).first.country : "NC"
+  end
 end

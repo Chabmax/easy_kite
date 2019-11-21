@@ -1,8 +1,68 @@
-
 // CSS file pour la page index de nos products
 
 .banner {
   max-width: 100%;
 }
+
+#map {
+  width: 44%;
+  height: 100vh;
+}
+
+/**** Card Display rules ****/
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+  grid-gap: 16px;
+  margin-top: 10px;
+  width: 54%;
+}
+
+
+// Smallest device
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .grid-wrapper {
+//     grid-template-columns: 1fr;
+//   }
+// }
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  #map {
+    width: 60%;
+  }
+  .grid-wrapper {
+    grid-template-columns: 1fr;
+    width: 38%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  #map {
+    display: none;
+  }
+  .grid-wrapper {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  .grid-wrapper {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   .grid-wrapper {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
 

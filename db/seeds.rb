@@ -41,101 +41,105 @@ titi = User.create!({
 puts 'Creating fake products...'
 
 p1 = Product.create!({
-  category: "aile",
+  category: "kite",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "157 Rue du Po, 56340 Carnac",
-
+  address: "157 Rue du Po, 56340 Carnac"
 })
+puts 'product 1'
+
 p2 = Product.create!({
-  category: "planche",
+  category: "board",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: toto.id,
-  address: "2 Rue Florian Laporte, 56100 Lorient",
-
+  address: "2 Rue Florian Laporte, 56100 Lorient"
 })
+puts 'product 2'
 
 p3 = Product.create!({
-  category: "harnais",
+  category: "harness",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id,
-  address: "11 rue de la mer",
-
+  user_id: titi.id,
+  address: "District de Sants-Montjuïc, Barcelone, Espagne"
 })
+puts 'product 3'
+
 p4 = Product.create!({
-  category: "barre",
-  brand: "surfbrand",
-  description: "Lorem efef ezf eez ",
-  status: rand(1..5),
-  price: rand(50..150),
-  user_id: toto.id,
-  address: "11 rue de la mer",
-
-})
-Product.create!({
-  category: "kit complet",
+  category: "kite bar",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: tonton.id,
-  address: "11 rue de la mer",
-
+  address: "1-5 Avenue du Golf, 33120 Arcachon"
 })
+puts 'product 4'
+
 Product.create!({
-  category: "accessoires",
+  category: "full kite",
+  brand: "surfbrand",
+  description: "Lorem efef ezf eez ",
+  status: rand(1..5),
+  price: rand(50..150),
+  user_id: tonton.id,
+  address: "154-340 Avenue du Onze Novembre, 40600 Biscarrosse"
+})
+puts 'product 5'
+
+Product.create!({
+  category: "accessories",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: tata.id,
-  address: "11 rue de la mer",
-
+  address: "Midoun, Tunisie"
 })
+puts 'product 6'
+
 Product.create!({
-  category: "kit complet",
+  category: "full kite",
   brand: "surfbrand",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
   user_id: tata.id,
-  address: "11 rue de la mer",
-
+  address: "Erriadh Tunisie"
 })
+puts 'product 7'
 
 Product.create!({
-  category: "planche",
+  category: "board",
   brand: "Duotone",
   description: "Lorem efef ezf eez ",
   status: rand(1..5),
   price: rand(50..150),
-  user_id: toto.id,
-  address: "9 Rue des Falaises, 66290 Cerbère",
-
+  user_id: tutu.id,
+  address: "9 Rue des Falaises, 66290 Cerbère"
 })
-
+puts 'product 8'
 
 Rental.create!({
   user_id: titi.id,
-  product_id: p1,
-  date_start: DateTime.new(2020,1,1),
-  date_end: DateTime.new(2020,2,1),
+  product_id: p1.id,
+  date_start: Date.new(2020,1,1),
+  date_end: Date.new(2020,2,1),
 })
 
 Rental.create!({
   user_id: titi.id,
-  product_id: p2,
-  date_start: DateTime.new(2020,2,14),
-  date_end: DateTime.new(2020,2,16),
+  product_id: p2.id,
+  date_start: Date.new(2020,2,14),
+  date_end: Date.new(2020,2,16),
 })
 
 
