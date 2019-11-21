@@ -2,6 +2,7 @@ import "bootstrap";
 import { initSweetalert } from '../components/init_sweetalert';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../components/init_mapbox';
+import {initAutocomplete} from '../components/init_autocomplete';
 
 initSweetalert('#sweet-alert-delete', {
   title: "WARNING",
@@ -18,3 +19,4 @@ initSweetalert('#sweet-alert-delete', {
 
 
 initMapbox();
+initAutocomplete();
