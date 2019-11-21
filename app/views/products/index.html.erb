@@ -14,14 +14,16 @@
       </div>
     <% end %>
   </div>
-    <div class="container-fluid d-flex justify-content-between">
-      <% Product.categories.each do |category| %>
-        <div class="card-category">
-          <p><%= category.capitalize %></p>
-        </div>
-      <% end %>
-      <div class="card-category remove-filters">Remove Filters</div>
-    </div>
+    <div class="container-fluid">
+      <div class="row">
+          <% Product.categories.each do |category| %>
+            <div class="col-sm-6 col-md-3 col-lg">
+              <div class="card-category"><%= category.capitalize %></div>
+            </div>
+          <% end %>
+          <div class="card-category remove-filters">Remove Filters</div>
+      </div>
+   </div>
 
 
 <div class="container-fluid d-flex">

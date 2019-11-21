@@ -1,3 +1,5 @@
+const productCards = document.querySelectorAll('[data-category]');
+console.log(productCards)
 const hideCard = (productCards, categoryName) => {
   productCards.forEach(card => {
     // Lorsqu'on click, récupérer le nom de la catégorie
@@ -12,31 +14,33 @@ const hideCard = (productCards, categoryName) => {
   });
 }
 
-const changeButtonColor = (event) => {
-  event.currentTarget.classList.toggle('card-active')
+  const changeButtonColor = (event) => {
+    event.currentTarget.classList.toggle('card-active')
+  }
+
+  const handleClickOnCard = (event) => {
+    const categoryName = event.target.innerText;
+    changeButtonColor(event);
+    hideCard(productCards, categoryName);
+  }
+
+
+  const filter = () => {
+    const categoryElements = document.querySelectorAll('.card-category');
+    if (productCards) {
+    // Placer un micro sur chaque catégorie
+    categoryElements.forEach(element => {
+      element.addEventListener("click", handleClickOnCard);
+      })
+      const resetFilters = () => {
+      document.querySelector('.remove-filters').addEventListener('click', () => {
+      const productCards = document.querySelectorAll('[data-category]');
+      productCards.forEach(card => card.style.display = "block");
+      resetFilters();
+      })
+    }
+  }
 }
 
-const handleClickOnCard = (event) => {
-  const productCards = document.querySelectorAll('[data-category]');
-  const categoryName = event.target.innerText;
-  changeButtonColor(event);
-  hideCard(productCards, categoryName);
-}
-
-const resetFilters = () => {
-  document.querySelector('.remove-filters').addEventListener('click', () => {
-    const productCards = document.querySelectorAll('[data-category]');
-    productCards.forEach(card => card.style.display = "block");
-  })
-}
-
-const filter = () => {
-  const categoryElements = document.querySelectorAll('.card-category');
-  // Placer un micro sur chaque catégorie
-  categoryElements.forEach(element => {
-    element.addEventListener("click", handleClickOnCard);
-  })
-  resetFilters();
-}
 
 export default filter;
