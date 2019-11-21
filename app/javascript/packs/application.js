@@ -6,6 +6,7 @@ import {initAutocomplete} from '../components/init_autocomplete';
 import filter from '../components/filter';
 import { initCarousel } from '../components/init_carousel';
 import { loadDynamicBannerText } from '../components/banner';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 initSweetalert('#sweet-alert-delete', {
   title: "WARNING",
@@ -26,3 +27,4 @@ initAutocomplete();
 filter();
 initCarousel();
 loadDynamicBannerText();
+initUpdateNavbarOnScroll();
