@@ -2,7 +2,7 @@
 .card-show {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   flex-grow: 0.5;
 }
@@ -26,20 +26,26 @@
 .avatar-bordered-show {
   width: 100px;
   border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  // box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
   position: absolute;
   z-index: 3;
   top: -10px;
   left: -20px;
 }
-
+.card-rental {
+  position: sticky;
+  top: 80px;
+  bottom: 80px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  background :white;
+}
 .card-show h2 {
   font-size: 23px;
   font-weight: bold;
-  letter-spacing: 1px;
   color: $gray;
-  margin-top: 8px;
+  margin: auto;
   padding-left: 8px;
 }
 .card-show p {
@@ -67,7 +73,7 @@
   overflow: hidden;
   height: 200px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   height: 300px;
   width: 500px;

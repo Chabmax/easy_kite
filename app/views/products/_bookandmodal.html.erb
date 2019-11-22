@@ -1,4 +1,4 @@
-  <div class="card-show mr-3 text-center">
+  <div class="card-rental text-center">
     <div class="text-center">
       <% if @product.rentals.present? %>
         <h2>🗓 Already Booked : 🗓  </h2>
@@ -27,7 +27,7 @@
     </div>
     <% end %>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#exampleModalCenter">
       Book
     </button>
   </div>

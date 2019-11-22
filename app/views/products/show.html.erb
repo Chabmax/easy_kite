@@ -1,38 +1,40 @@
 <%= render 'carousel' %>
 
-  <!-- nom - proposé par + Avatar -->
-<div class="card-show ml-2 d-flex justify-content-between ">
-  <div class="d-flex justify-content-center">
-    <div>
-      <p><%= @product.user.first_name%> <%= @product.user.last_name%></p>
+<div class="container col-11">
+  <div class="row">
+    <div class="col-7">
+      <div class="user-infos">
+        <img src="https://kitt.lewagon.com/placeholder/users/BrianRid" style="width: 75px" class="avatar-bordered" />
+        <h2> <%= @product.category.capitalize %></h2>
+        <p>Proposed by: <%= @product.user.full_name %></p>
+      </div>
+      <div class="">
+        <%= render 'product_infos' %>
+      </div>
+      <div>
+        <% if policy(@product).edit? %>
+          <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-success shadow mb-2"  %>
+        <% end %>
+        <% if policy(@product).destroy? %>
+          <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>
+          <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
+        <% end %>
+      </div>
+      <div>
+        <%= render 'map_show' %>
+      </div>
+
     </div>
-    <div>
-      <img src="https://kitt.lewagon.com/placeholder/users/BrianRid" style="width: 75px" class="avatar-bordered" />
+    <div class="col-5">
+    <%= render 'bookandmodal', rental: @rental, product: @product %>
     </div>
   </div>
 </div>
-    <div>
-    </div>
 
-<div class="container col-10 d-flex justify-content-between">
-  <%= render 'product_infos' %>
-  <%= render 'modal' %>
-</div>
 
-<div class="container-map-product col-10 d-flex justify-content-between">
-  <%= render 'map_show' %>
-</div>
+
 
 <!-- Edit and Delete Buttons -->
-<div class="container col-10 mt-2">
-  <% if policy(@product).edit? %>
-    <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-success shadow mb-2"  %>
-  <% end %>
-  <% if policy(@product).destroy? %>
-    <button id="sweet-alert-delete" class="btn btn-danger shadow mb-2">Delete product</button>
-    <%= link_to "", @product, :method => :delete, id: "delete-link" , class: "hidden" %>
-  <% end %>
-</div>
 
 
 <!-- Photos -->
