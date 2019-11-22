@@ -1,7 +1,7 @@
   <div class="card-rental text-center">
     <div class="text-center">
       <% if @product.rentals.present? %>
-        <h2>🗓 Already Booked : 🗓  </h2>
+        <h2><i class="fa fa-calendar"></i> Already Booked :  </h2>
         <% @product.rentals.each do |rental| %>
           <p>From <%= rental.date_start %> to <%= rental.date_end %></p>
         <%end %>
@@ -28,7 +28,7 @@
     <% end %>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#exampleModalCenter">
-      Book
+      Book this <%= @product.category %> Now !
     </button>
   </div>
 

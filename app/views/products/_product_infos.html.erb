@@ -5,13 +5,9 @@
           <h1><%= @product.brand.capitalize %></h1>
           <h2> <%= @product.category.capitalize %> status: <%= @product.status %> </h2>
         </div>
-        <h2 class="mt-2 mr-2" style="font-size: 20px;"><%= @product.price %> €/jour </h2>
+        <h2 class="mt-2 mr-2" style="font-size: 20px;"><%= @product.price %> €/day</h2>
       </div>
       <div class="card-body ">
-
-        <br/>
-        <br/>
-        <br/>
         <div class="description">
           <h2>Description:</h2>
           <p><%= @product.description %></p>
