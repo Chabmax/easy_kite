@@ -20,6 +20,8 @@ font-size: 14px;
 
 }
 
+
+
 .product-container {
   display: flex;
   justify-content: space-around;
@@ -29,7 +31,7 @@ font-size: 14px;
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: #d5ffed;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -41,16 +43,21 @@ font-size: 14px;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #1EDD88;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: #1EDD88;
+}
+
+.total {
+  color: #18b06c
 }
 
 /* Style the tab content */

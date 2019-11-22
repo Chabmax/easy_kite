@@ -8,7 +8,7 @@
     <button class="tablinks btn btn-success" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
   </div>
 
-  <div id="OWNER" class="product-container tabcontent">
+  <div id="OWNER" class="product-container tabcontent bg-white">
     <div class="d-flex">
       <div class="div-dte">
         <h5 class="title-table">MY PRODUCTS</h5>
@@ -28,14 +28,17 @@
             </div>
           <% end %>
         <% end %>
-        <tr><p class="text-success font-weight-bold" >TOTAL : <%= @total[0]+@total[1] %> €</p></tr>
+        <tr><p class="total font-weight-bold" >TOTAL : <%= (@total[0]+@total[1]).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %> €</p></tr>
         <!-- number_to_currency(@total[0]+@total[1], locale: :fr) -->
 
         </table>
       </div>
 
       <div class="div-gauche">
-       <h5 class="title-table">FUTURE RENTALS Total : <%= @total[0] %> €</h5>
+       <h5 class="title-table d-flex justify-content-between">
+         <span>FUTURE RENTALS</span>
+         <span>Total : <%= @total[0].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %> €</span>
+        </h5>
        <!-- number_to_currency(@total[0], locale: :fr) -->
       <table class="table-rentals table">
         <thead>
@@ -72,7 +75,9 @@
         <% end  %>
         </tbody>
       </table>
-        <h5 class="title-table">PAST RENTALS Total : <%= @total[1] %> €</h5>
+        <h5 class="title-table d-flex justify-content-between">
+          <span>PAST RENTALS</span> <span> Total : <%= @total[1].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %> €</span>
+        </h5>
         <!-- number_to_currency(@total[1], locale: :fr) -->
         <table class="table-rentals table">
         <thead>
@@ -109,7 +114,7 @@
 
     </div>
   </div>
-  <div id="RENTER" class="product-container tabcontent">
+  <div id="RENTER" class="product-container tabcontent bg-white">
       <h5 class="title-table">FUTURE RENTALS</h5>
          <table class="table-rentals table">
         <thead>
