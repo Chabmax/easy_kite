@@ -1,1 +1,2 @@
-I18n.config.available_locales = :fr
+I18n.config.available_locales = :en
+
