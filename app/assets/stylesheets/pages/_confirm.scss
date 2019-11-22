@@ -1,0 +1,25 @@
+.confirm-banner {
+  background-size: cover;
+}
+
+.border-green-4 {
+  border: 4px $green solid;
+  padding: 20px;
+}
+
+.confirm-container {
+  background-color: rgba(255,255,255,0.9);
+}
+
+.calendar-confirm {
+  font-size: 40px;
+  color: $green;
+}
+
+.confirm-email a {
+  text-decoration: underline;
+}
+
+.book-information p {
+  margin: 0;
+}

@@ -3,15 +3,18 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = policy_scope(Product)
-    @products = Product.geocoded
-
-    @markers = @products.map do |product|
-      {
-        lat: product.latitude,
-        lng: product.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { product: product })}
+    if params[:query].present?
+      @products = policy_scope(Product).near(params[:query], 60)
+    else
+      @products = policy_scope(Product).geocoded
     end
+      @markers = @products.map do |product|
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { product: product })
+        }
+      end
   end
 
   def show

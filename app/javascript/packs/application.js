@@ -5,6 +5,8 @@ import { initMapbox } from '../components/init_mapbox';
 import {initAutocomplete} from '../components/init_autocomplete';
 import filter from '../components/filter';
 import { initCarousel } from '../components/init_carousel';
+import { loadDynamicBannerText } from '../components/banner';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 initSweetalert('#sweet-alert-delete', {
   title: "WARNING",
@@ -20,7 +22,28 @@ initSweetalert('#sweet-alert-delete', {
 });
 
 
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+
+
+
 initMapbox();
 initAutocomplete();
 filter();
 initCarousel();
+loadDynamicBannerText();
+initUpdateNavbarOnScroll();

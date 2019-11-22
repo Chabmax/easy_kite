@@ -13,12 +13,21 @@
 @import "components/index";
 @import "pages/index";
 
-a {
-  color: #3e3e3e;
-  text-decoration: none;
-}
-a:hover {
-  color: #3e3e3e;
-  text-decoration: none;
-  font-weight: bold;
+.form-group {
+    margin-bottom: 0.5rem;
+  }
+
+.form-wrapper {
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  form {
+      width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }

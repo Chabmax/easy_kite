@@ -1,10 +1,11 @@
 class RentalsController < ApplicationController
   before_action :set_product, only: [:new, :create]
-  before_action :set_rental, only: [:edit, :update, :destroy]
+  before_action :set_rental, only: [:confirm, :edit, :update, :destroy]
 
   def index
     @rentals = policy_scope(Rentals)
   end
+
 
   def new
     @rental = Rental.new
@@ -15,15 +16,16 @@ class RentalsController < ApplicationController
     @rental = current_user.rentals.build(params_rental)
     @rental.product = @product
     authorize @rental
-    if valid_rental_period?(@product, @rental)
-      if @rental.save
-        redirect_to @product, notice: "Rental successfully created"
-      else
-        redirect_to @product
-      end
+
+    if @rental.save
+      redirect_to confirm_rental_path(@rental)
     else
       redirect_to @product
     end
+  end
+
+  def confirm
+    @product = @rental.product
   end
 
   def edit
@@ -55,16 +57,5 @@ class RentalsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
-  end
-
-  def valid_rental_period?(product, new_rental)
-    product.rentals.all? do |rental|
-      start_before_start = new_rental.date_start < rental.date_start
-      end_before_start = new_rental.date_end < rental.date_start
-      start_after_end = new_rental.date_start > rental.date_end
-      end_after_end = new_rental.date_end > rental.date_end
-
-      (start_before_start && end_before_start) || (start_after_end && end_after_end)
-    end
   end
 end

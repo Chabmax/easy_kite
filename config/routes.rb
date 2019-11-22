@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :rentals, only: [ :index, :new, :create ]
   end
 
-  resources :rentals, only: [:destroy, :edit, :update]
+  resources :rentals, only: [:destroy, :edit, :update] do
+    member do            # member => rental id in URL
+      get 'confirm'      # RentalsController#confirm
+    end
+  end
 
   get '/dashboard', to: 'pages#dashboard'
 
