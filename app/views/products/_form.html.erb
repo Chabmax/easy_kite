@@ -1,18 +1,20 @@
 <%= simple_form_for(@product) do |f| %>
-
   <div class="product-infos col-lg-9">
-    <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category" %>
-    <%= f.input :brand %>
-    <%= f.input :description, placeholder: "Very easy to use / For expert only / Good sensation... " %>
-    <%= f.input :status,  as: :radio_buttons, collection: Product::STATUS.reverse %>
-    <%= f.input :price, label: 'Price/day TTC', input_html: { min: '0' }, hint: "This is the price per day in €"  %>
+    <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category", label: false %>
+    <%= f.input :brand, placeholder: 'Insert the brand for the new product', label: false %>
+    <%= f.input :description, placeholder: "DESCRIPTION : Very easy to use / For expert only / Good sensation... ", label: false %>
+    <%= f.input :status,  as: :select, prompt: 'Insert the state of use : 1 = Very Good, 5 = Not too bad', label: false , collection: Product::STATUS.reverse %>
+    <%= f.input :price, placeholder: 'Price/day TTC', input_html: { min: '0' }, hint: "This is the price per day in €", label: false %>
     <%= f.input :photos, as: :file, input_html: { multiple: true }, hint: "You can download many photos. Accepted format : jpeg, jpg, png, gif" %>
   </div>
 
   <div class="product-location col-lg-9">
-    <%= f.input :address %>
+    <%= f.input :address, placeholder: 'Insert the product location', label: false %>
   </div>
 
-  <%= f.submit class: 'btn btn-primary'%>
-
+  <div class="d-flex align-items-center justify-content-between col-lg-9" style="width: 100%">
+    <%= f.submit class: 'btn btn-primary'%>
+    <%= link_to "Back", products_path, class: "btn btn-info justify-right"%>
+  </div>
 <% end %>
+

@@ -9,14 +9,16 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
+
   <body>
     <%= render 'shared/navbar' %>
-
     <%= render 'shared/flashes' %>
 
       <%= yield %>
 
+  <% if params[:action] != 'new' && params[:controller] == 'product' %>
     <%= render 'shared/footer' %>
+  <% end %>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
