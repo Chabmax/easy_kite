@@ -3,7 +3,7 @@
     <%= f.input :category, collection: Product::CATEGORIES, include_blank: "Select a category", label: false %>
     <%= f.input :brand, placeholder: 'Insert the brand for the new product', label: false %>
     <%= f.input :description, placeholder: "DESCRIPTION : Very easy to use / For expert only / Good sensation... ", label: false %>
-    <%= f.input :status,  as: :select, prompt: 'Insert the state of use : 1 = Very Good, 5 = Not too bad', label: false , collection: Product::STATUS.reverse %>
+    <%= f.input :status,  as: :select, prompt: 'Insert the state of use', label: false , collection: Product::STATUS %>
     <%= f.input :price, placeholder: 'Price/day TTC', input_html: { min: '0' }, hint: "This is the price per day in €", label: false %>
     <%= f.input :photos, as: :file, input_html: { multiple: true }, hint: "You can download many photos. Accepted format : jpeg, jpg, png, gif" %>
   </div>
