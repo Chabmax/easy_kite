@@ -8,6 +8,10 @@ class Rental < ApplicationRecord
   validate :end_date_after_start_date?
   validate :rental_period_is_free?
 
+  def total_price
+    product.price * (date_end - date_start + 1).to_i
+  end
+
   private
 
   def start_date_after_today?

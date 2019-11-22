@@ -1,0 +1,31 @@
+<div class="confirm-banner py-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://www.voiledetraction.fr/wp-content/uploads/kitesurf-sicily-the-best-offers-in-kitesurf-for-a-sport.jpeg);">
+  <div class="container confirm-container border-green-4">
+    <div class="text-center">
+      <p>THANK YOU</p>
+      <i class="fa fa-calendar-check calendar-confirm"></i>
+      <h1 class="my-5"><%= current_user.first_name %> your rental is confirm !</h1>
+      <div class="confirm-email mb-4">
+        <p class="mb-1">We sent you a mail to <strong><%= current_user.email %></strong></p>
+        <a href="#">Not your email ?</a>
+      </div>
+
+      <div class="book-information">
+        <h3>Find here all your informations for your reservation</h3>
+        <div class="mx-auto w-50 text-left">
+          <p><strong><%= @rental.date_start.strftime("%B %d, %Y") %></strong> <i class="fa fa-arrow-right"></i> <strong><%= @rental.date_end.strftime("%B %d, %Y") %></strong></p>
+          <p>Address : <strong><%= @product.address %></strong></p>
+          <p>Category : <strong><%= @product.category %></strong></p>
+          <p>Brand : <strong><%= @product.brand %></strong></p>
+          <p>Owner : <strong><%= @product.user.full_name %></strong></p>
+          <p>Price : <strong><%= @rental.total_price %> €</strong>
+        </div>
+      </div>
+
+      <div class="confirm-link d-flex justify-content-between mt-4">
+        <%= link_to "Back to ad", product_path(@product), class: "btn btn-warning" %>
+        <%= link_to "Go to your dashboard", dashboard_path, class: "btn btn-success" %>
+        <%= link_to 'Print <i class="fas fa-print"></i>'.html_safe, root_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

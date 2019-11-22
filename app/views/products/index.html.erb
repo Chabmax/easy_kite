@@ -1,19 +1,20 @@
 <!-- BANNER -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://www.voiledetraction.fr/wp-content/uploads/kitesurf-sicily-the-best-offers-in-kitesurf-for-a-sport.jpeg);">
-  <div class="container">
-    <h1>Easy Kite</h1>
-    <p>
-      <span id="banner-typed-text"></span>
-    </p>
-    <br>
-  <%= simple_form_for :search, url: products_path, method: :get do |f| %>
-    <div class="search-form-control form-group d-flex">
-      <input id="kite-search" class="form-control string required" type="text" name="query" id="search_query" placeholder="Find your product by city" />
-      <button name="button" type="submit" class="btn btn-success">
-        <i class="fas fa-search"></i> Search
-      </button>
-    </div>
-  <% end %>
+    <div class="container">
+      <h1>Easy Kite</h1>
+      <p>
+        <span id="banner-typed-text"></span>
+      </p>
+      <br>
+    <%= simple_form_for :search, url: products_path, method: :get do |f| %>
+      <div class="search-form-control form-group d-flex">
+        <input id="kite-search" class="form-control string required" type="text" name="query" id="search_query" placeholder="Find your product by city" />
+        <button name="button" type="submit" class="btn btn-success">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="container-fluid">
@@ -51,7 +52,7 @@
                 <p>by : <em><%= product.user.full_name %></em></p>
               </div>
               <h2 class="card-trip-pricing"><%= product.price %>€<small>/day</small></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/Chabmax" class="card-trip-user avatar-bordered" />
+              <img src='<%= "https://randomuser.me/api/portraits/men/#{rand(1..50).to_s}.jpg" %>' class="card-trip-user avatar-bordered" />
             </div>
          </div>
       <%end %>
