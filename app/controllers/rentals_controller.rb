@@ -16,10 +16,11 @@ class RentalsController < ApplicationController
     @rental = current_user.rentals.build(params_rental)
     @rental.product = @product
     authorize @rental
+
     if @rental.save
       redirect_to confirm_rental_path(@rental)
     else
-      render "products/show"
+      redirect_to @product
     end
   end
 
