@@ -8,5 +8,6 @@ class PagesController < ApplicationController
     @user = current_user
     @rentals = @user.rentals.order(date_start: :asc)
     @rented = @user.rentals_as_owner
+    @total = @user.total
   end
 end

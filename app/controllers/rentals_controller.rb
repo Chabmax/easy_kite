@@ -6,6 +6,7 @@ class RentalsController < ApplicationController
     @rentals = policy_scope(Rentals)
   end
 
+
   def new
     @rental = Rental.new
     authorize @rental
