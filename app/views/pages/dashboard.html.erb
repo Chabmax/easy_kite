@@ -1,17 +1,11 @@
 
-
-
-
-<%=  @user.products.first.user.first_name %>
-<%=  @user.products.first.user.first_name %>
-<%=  @user.products.first.user.first_name %>
 <div class="container">
 
 
 
   <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
-    <button class="tablinks" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
+    <button class="tablinks btn btn-success" id="defaultOpen" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
+    <button class="tablinks btn btn-success" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
   </div>
 
   <div id="OWNER" class="product-container tabcontent">
@@ -23,7 +17,7 @@
           <%=  link_to product_path(product) do %>
             <div>
               <tr>
-                <td><%= product.category %><%= product.brand %></td>
+                <td><%= product.category %> <%= product.brand %></td>
                 <td><% if policy(product).edit? %>
                   <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_product_path(product) %>
                 <% end %></td>
@@ -34,18 +28,25 @@
             </div>
           <% end %>
         <% end %>
+        <tr><p class="text-success lead" >TOTAL : <%= @total[0]+@total[1] %> €</p></tr>
+        <!-- number_to_currency(@total[0]+@total[1], locale: :fr) -->
+
         </table>
       </div>
+
       <div class="div-gauche">
-       <h5 class="title-table">FUTURE RENTALS</h5>
+       <h5 class="title-table">FUTURE RENTALS Total : <%= @total[0] %> €</h5>
+       <!-- number_to_currency(@total[0], locale: :fr) -->
       <table class="table-rentals table">
         <thead>
           <th>Brand</th>
           <th>Category</th>
           <th>Start Date</th>
           <th>End Date</th>
-          <th>Rented FROM</th>
+          <th>Rented TO</th>
           <th>PRICE</th>
+          <th></th>
+          <th></th>
         </thead>
         <tbody>
         <% @rented.each do |rental| %>
@@ -57,7 +58,13 @@
               <td><%= rental.date_start %></td>
               <td><%= rental.date_end %></td>
               <td><%= rental.user.first_name %></td>
-              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+              <td><%= rental.product.price * (rental.date_end - rental.date_start + 1 ).to_i %>€ </td>
+              <td><% if policy(rental).edit? %>
+                  <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_rental_path(rental) %>
+                <% end %></td>
+              <td><% if policy(rental).destroy? %>
+                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, rental, :method => :delete, data: { confirm: 'Are you sure?' }  %>
+                <% end %></td>
             </tr>
           <% end %>
 
@@ -65,18 +72,21 @@
         <% end  %>
         </tbody>
       </table>
-        <h5 class="title-table">PAST RENTALS</h5>
+        <h5 class="title-table">PAST RENTALS Total : <%= @total[1] %> €</h5>
+        <!-- number_to_currency(@total[1], locale: :fr) -->
         <table class="table-rentals table">
         <thead>
           <th>Brand</th>
           <th>Category</th>
           <th>Start Date</th>
           <th>End Date</th>
-          <th>Rented FROM</th>
+          <th>Rented TO</th>
           <th>PRICE</th>
+          <th></th>
+          <th></th>
         </thead>
         <tbody>
-        <% @rentals.each do |rental| %>
+        <% @rented.each do |rental| %>
           <% if rental.date_start <= Time.now %>
           <tr>
             <td><%= rental.product.brand %></td>
@@ -84,7 +94,9 @@
             <td><%= rental.date_start %></td>
             <td><%= rental.date_end %></td>
             <td><%= rental.user.first_name %></td>
-            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+            <td><%= rental.product.price * (rental.date_end - rental.date_start + 1).to_i %>€ </td>
+            <td></td>
+            <td></td>
           </tr>
           <% end %>
         <% end  %>
@@ -105,18 +117,30 @@
           <th>Category</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Rented FROM</th>
           <th>PRICE</th>
+          <th></th>
+          <th></th>
         </thead>
         <tbody>
-        <% @rented.each do |rental| %>
-
-          <% if rental.date_start <= Time.now %>
+        <% @rentals.each do |rental| %>
+          <% if rental.date_start >= Time.now %>
             <tr>
               <td><%= rental.product.brand %></td>
               <td><%= rental.product.category %></td>
               <td><%= rental.date_start %></td>
               <td><%= rental.date_end %></td>
-              <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+              <td><%= rental.product.user.first_name %></td>
+              <td><%= rental.product.price * (rental.date_end - rental.date_start + 1 ).to_i %>€</td>
+                 <td>
+                  <% if policy(rental).edit? %>
+                  <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_rental_path(rental) %>
+                <% end %>
+
+                </td>
+              <td><% if policy(rental).destroy? %>
+                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, rental, :method => :delete, data: { confirm: 'Are you sure?' }  %>
+                <% end %></td>
             </tr>
           <% end %>
         <% end  %>
@@ -130,27 +154,29 @@
           <th>Category</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Rented TO</th>
           <th>PRICE</th>
+          <th></th>
+          <th></th>
         </thead>
         <tbody>
-        <% @rented.each do |rental| %>
-                  <% if rental.date_start <= Time.now %>
+        <% @rentals.each do |rental| %>
+          <% if rental.date_start <= Time.now %>
           <tr>
             <td><%= rental.product.brand %></td>
             <td><%= rental.product.category %></td>
             <td><%= rental.date_start %></td>
             <td><%= rental.date_end %></td>
-            <td><%= rental.product.price * (rental.date_end - rental.date_start).to_i %>€ %></td>
+            <td><%= rental.product.user.first_name %></td>
+            <td><%= rental.product.price * (rental.date_end - rental.date_start + 1 ).to_i %>€</td>
+            <td> </td>
+            <td> </td>
           </tr>
           <% end %>
         <% end  %>
         </tbody>
         </table>
-
-
-
   </div>
-
 </div>
 
 
@@ -170,5 +196,6 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+document.getElementById("defaultOpen").click();
 </script>
 

@@ -41,16 +41,16 @@
     <div class="text-center">
       <p>proposé(e) par </p>
          <img src="https://kitt.lewagon.com/placeholder/users/BrianRid" class="card-show-user avatar-bordered-show" />
-      <p><%= @product.user.first_name%> <%= @product.user.last_name%></p>
+      <p><%= @product.user.full_name %></p>
     </div>
   </div>
   <!-- Booked Informations -->
   <div class="card-show mr-3">
     <div class="text-center">
       <% if @product.rentals.present? %>
-        <h2>🗓 Already Booked : 🗓  </h2>
-        <% @product.rentals.each do |rental| %>
-          <p>From <%= rental.date_start %> to <%= rental.date_end %></p>
+        <h2><i class="fa fa-calendar"></i> Already Booked : </h2>
+        <% @product.rentals.order('date_start ASC').each do |rental| %>
+          <p><%= rental.date_start.strftime("From %B %d, %Y") %> <i class="fa fa-arrow-right"></i> <%= rental.date_end.strftime("to %B %d, %Y") %></p>
         <%end %>
       <% else %>
         <h2> 🚀 Available for Booking 🚀 </h2>
