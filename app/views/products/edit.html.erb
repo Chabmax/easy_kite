@@ -1,8 +1,13 @@
-<div class="container">
-  <h1>Edit your product</h1>
+<div class="confirm-banner py-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://www.voiledetraction.fr/wp-content/uploads/kitesurf-sicily-the-best-offers-in-kitesurf-for-a-sport.jpeg);">
+  <div class="container confirm-container border-green-4 d-flex justify-content-center">
+    <div class="form-wrapper mb-2">
+      <h1 class='text-center my-2'>Edit your product</h1>
 
-  <%= render 'form' %>
+      <%= render 'form' %>
 
-  <%= link_to "Back", product_path(@product) %>
+      <%= link_to "Back", product_path(@product) %>
 
+    </div>
+  </div>
 </div>
+
