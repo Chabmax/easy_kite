@@ -21,7 +21,15 @@
         <% end %>
       </div>
       <div>
-        <%= render 'map_show' %>
+        <div class="picture-wrapper">
+         <% if @product.photos.attached? %>
+            <% @product.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "picture-item"%>
+            <% end %>
+          <% else %>
+            <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
+          <% end %>
+        </div>
       </div>
 
     </div>
@@ -39,17 +47,7 @@
 
 <!-- Photos -->
 <div class="container col-10 mt-2">
-  <div class="picture-wrapper">
-   <% if @product.photos.attached? %>
-    <!-- sinon photos.present? ou unless photos[0]. -->
-      <% @product.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "picture-item"%>
-      <% end %>
-    <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
-    <% end %>
-  </div>
-</div>
+  <%= render 'map_show' %>
 </div>
 
 
