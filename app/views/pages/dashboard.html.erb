@@ -4,8 +4,8 @@
 
 
   <div class="tab">
-    <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
-    <button class="tablinks" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
+    <button class="tablinks btn btn-success" id="defaultOpen" onclick="openCity(event, 'RENTER')" > MY RENTALS</button>
+    <button class="tablinks btn btn-success" onclick="openCity(event, 'OWNER')" > MY PRODUCTS</button>
   </div>
 
   <div id="OWNER" class="product-container tabcontent">
@@ -28,12 +28,15 @@
             </div>
           <% end %>
         <% end %>
-        <tr>TOTAL : <%= @total[0]+ @total[1] %> €</tr>
+        <tr><p class="text-success lead" >TOTAL : <%= @total[0]+@total[1] %> €</p></tr>
+        <!-- number_to_currency(@total[0]+@total[1], locale: :fr) -->
+
         </table>
       </div>
 
       <div class="div-gauche">
        <h5 class="title-table">FUTURE RENTALS Total : <%= @total[0] %> €</h5>
+       <!-- number_to_currency(@total[0], locale: :fr) -->
       <table class="table-rentals table">
         <thead>
           <th>Brand</th>
@@ -70,6 +73,7 @@
         </tbody>
       </table>
         <h5 class="title-table">PAST RENTALS Total : <%= @total[1] %> €</h5>
+        <!-- number_to_currency(@total[1], locale: :fr) -->
         <table class="table-rentals table">
         <thead>
           <th>Brand</th>
