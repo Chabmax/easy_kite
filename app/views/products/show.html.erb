@@ -4,9 +4,9 @@
   <div class="row">
     <div class="col-7">
       <div class="user-infos">
-        <img src="https://kitt.lewagon.com/placeholder/users/BrianRid" style="width: 75px" class="avatar-bordered" />
-        <h2> <%= @product.category.capitalize %></h2>
-        <p>Proposed by: <%= @product.user.full_name %></p>
+        <img src= <%= "https://randomuser.me/api/portraits/men/#{rand(1..50).to_s}.jpg" %> style="width: 75px" class="avatar-bordered-show" />
+        <h2 class="text-center"> <%= @product.category.capitalize %></h2>
+        <p class="text-center">Proposed by: <%= @product.user.full_name %></p>
       </div>
       <div class="">
         <%= render 'product_infos' %>
