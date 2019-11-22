@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
   before_action :set_product, only: [:new, :create]
-  before_action :set_rental, only: [:edit, :update, :destroy]
+  before_action :set_rental, only: [:confirm, :edit, :update, :destroy]
 
   def index
     @rentals = policy_scope(Rentals)
@@ -17,10 +17,14 @@ class RentalsController < ApplicationController
     @rental.product = @product
     authorize @rental
     if @rental.save
-      redirect_to @product, notice: "Rental successfully created"
+      redirect_to confirm_rental_path(@rental)
     else
       render "products/show"
     end
+  end
+
+  def confirm
+    @product = @rental.product
   end
 
   def edit

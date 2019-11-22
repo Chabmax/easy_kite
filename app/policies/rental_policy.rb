@@ -9,6 +9,10 @@ class RentalPolicy < ApplicationPolicy
     true
   end
 
+  def confirm?
+    record.user == user
+  end
+
   def update?
     record.user == user || record.product.user == user
   end
