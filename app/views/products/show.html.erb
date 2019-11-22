@@ -21,12 +21,14 @@
         <% end %>
       </div>
       <div>
-        <div class="picture-wrapper">
+        <div class="picture-wrapper mt-2">
          <% if @product.photos.attached? %>
             <% @product.photos.each do |photo| %>
             <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "picture-item"%>
             <% end %>
           <% else %>
+            <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
+            <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
             <%= image_tag "https://source.unsplash.com/featured/300X1200/?kitesurf", height: 300, width: 400, crop: :fill %>
           <% end %>
         </div>

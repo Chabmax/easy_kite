@@ -61,6 +61,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 18px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
 }
 
 .picture-wrapper .picture-item {
@@ -76,7 +81,6 @@
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   height: 300px;
-  width: 500px;
 }
 
 .card-product img {
